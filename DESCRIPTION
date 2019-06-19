@@ -1,0 +1,12 @@
+Package: legcoplus
+Type: Package
+Title: Enhances data output from Hong Kong Legislative Council APIs
+Version: 0.0.9999
+Author: Elgar Teo
+Maintainer: Elgar Teo <elgarteo@hku.hk>
+Description: This R package works with the package legco. The functions in this package 
+  presents data from the LegCo APIs in a better way.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
