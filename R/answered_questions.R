@@ -28,31 +28,34 @@
 #'   the original language delivered by the speakers in LegCo. If `'TRUE'`, the
 #'   language option is ignored. Defaults to `FALSE`.
 #'
-#' @param n The number of entry to fetch. As the LegCo APIs have a limit, it is
-#'   not advisable to fetch more than 5 questions per time. Defaults to `5`.
+#' @param n The number of entry to fetch. Defaults to `50`.
 #'
 #' @param verbose Defaults to `TRUE`.
 #'
 #' @export
 #' 
 answered_questions <- function(speaker_id = NULL, type = "all", lang = "en", from = '1900-01-01', 
-                                   to = Sys.Date(), floor = FALSE, n = 5, verbose = TRUE) {
+                                   to = Sys.Date(), floor = FALSE, n = 50, verbose = TRUE) {
   if (is.null(speaker_id)) {
-    message("Please specifiy at least one LegCo member.")
+    message("Error: Please specifiy at least one LegCo member.")
   } else {
     df <- legco::questions(speaker_id = speaker_id, type = type, lang = lang,
                            from = from, to = to, floor = floor, n = n, verbose = verbose)
     
     if (!is.null(df)) {
+      n <- set_limit()
       for (i in 1:nrow(df)) {
         # Locate range of Rundown ID of question
         hansard_id <- legco::rundown(df$RundownID[i], verbose = verbose)
+        n <- check_limit(n, verbose)
         hansard_id <- hansard_id$HansardID
         max_rundown_id <- legco::subjects(hansard_id = hansard_id, verbose = verbose)
+        n <- check_limit(n, verbose)
         max_rundown_id <- max_rundown_id$RundownID[min(which(max_rundown_id$RundownID > df$RundownID[i]))] - 1
 
         # Fetch full text with Rundown IDs
         full_txt <- legco::rundown((df$RundownID[i] + 1):max_rundown_id, verbose = verbose)
+        n <- check_limit(n, verbose)
         full_txt <- full_txt[order(full_txt$RundownID), ]
         
         # Identify Speaker ID of answering public officer

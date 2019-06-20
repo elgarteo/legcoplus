@@ -5,7 +5,7 @@
 \title{Answered Questions in LegCo}
 \usage{
 answered_questions(speaker_id = NULL, type = "all", lang = "en",
-  from = "1900-01-01", to = Sys.Date(), floor = FALSE, n = 5,
+  from = "1900-01-01", to = Sys.Date(), floor = FALSE, n = 50,
   verbose = TRUE)
 }
 \arguments{
@@ -34,8 +34,7 @@ files. The floor version is the first presented version of hansard file in
 the original language delivered by the speakers in LegCo. If `'TRUE'`, the
 language option is ignored. Defaults to `FALSE`.}
 
-\item{n}{The number of entry to fetch. As the LegCo APIs have a limit, it is
-not advisable to fetch more than 5 questions per time. Defaults to `5`.}
+\item{n}{The number of entry to fetch. Defaults to `50`.}
 
 \item{verbose}{Defaults to `TRUE`.}
 }

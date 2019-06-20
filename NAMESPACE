@@ -2,6 +2,7 @@
 
 export(all_members)
 export(answered_questions)
+export(member_voting_record)
 import(legco)
 importFrom(dplyr,full_join)
 importFrom(jsonlite,fromJSON)
