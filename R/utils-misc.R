@@ -11,7 +11,7 @@ check_limit <- function (n, verbose) {
       message("API access limit reached. Resuming in 60 seconds...")
     }
     Sys.sleep(60)
-    n <- 60
+    n <- set_limit()
   }
   n
 }

@@ -2,9 +2,13 @@
 % Please edit documentation in R/all_members.R
 \name{all_members}
 \alias{all_members}
+\alias{legco_all_members}
 \title{All LegCo Members}
 \usage{
 all_members(speaker_id = NULL, member_id = NULL, verbose = TRUE)
+
+legco_all_members(speaker_id = NULL, member_id = NULL,
+  verbose = TRUE)
 }
 \arguments{
 \item{speaker_id}{The Speaker ID, or a vector of IDs, as specified in the

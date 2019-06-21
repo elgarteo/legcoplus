@@ -2,6 +2,9 @@
 
 export(all_members)
 export(answered_questions)
+export(legco_all_members)
+export(legco_answered_questions)
+export(legco_member_voting_record)
 export(member_voting_record)
 import(legco)
 importFrom(dplyr,full_join)

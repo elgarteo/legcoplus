@@ -2,14 +2,23 @@
 % Please edit documentation in R/answered_questions.R
 \name{answered_questions}
 \alias{answered_questions}
+\alias{legco_answered_questions}
 \title{Answered Questions in LegCo}
 \usage{
-answered_questions(speaker_id = NULL, type = "all", lang = "en",
-  from = "1900-01-01", to = Sys.Date(), floor = FALSE, n = 50,
-  verbose = TRUE)
+answered_questions(speaker_id = NULL, member_id = NULL, type = "all",
+  lang = "en", from = "1900-01-01", to = Sys.Date(), floor = FALSE,
+  n = 50, verbose = TRUE)
+
+legco_answered_questions(speaker_id = NULL, member_id = NULL,
+  type = "all", lang = "en", from = "1900-01-01", to = Sys.Date(),
+  floor = FALSE, n = 50, verbose = TRUE)
 }
 \arguments{
-\item{speaker_id}{The Speaker ID of a member, or a vector of IDs.}
+\item{speaker_id}{The Speaker ID, or a vector of IDs, as specified in the
+output from the function `legco::speakers()`. Defaults to `NULL`.}
+
+\item{member_id}{The member ID, or a vector of IDs, as specified in the output of the
+function `legco::member()`. Defaults to `NULL`.}
 
 \item{type}{The type of question. `'oral'` returns oral questions.
 `'written'` returns written questions. `'all'` returns all questions.
