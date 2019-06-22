@@ -30,7 +30,6 @@ all_members <- function(speaker_id = NULL, member_id = NULL, verbose = TRUE) {
   }
   
   df
-  
 }
 
 #' @rdname all_members
