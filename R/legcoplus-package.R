@@ -18,9 +18,6 @@
 #'
 #' @docType package
 #' @name legcoplus
-#' @importFrom jsonlite fromJSON
-#' @importFrom utils URLencode
-#' @importFrom stringr str_detect
 #' @importFrom dplyr full_join
 #' @import legco 
 NULL

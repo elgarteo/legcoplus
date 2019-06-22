@@ -87,7 +87,6 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL, type = "all"
       }
       
       df
-      
     }
   }
 }
