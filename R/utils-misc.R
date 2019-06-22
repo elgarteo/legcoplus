@@ -1,9 +1,9 @@
-# Function to set API limit counter
+## Function to set API limit counter
 set_limit <- function() {
   60
 }
 
-# Function to pause once API limit is reached
+## Function to pause once API limit is reached
 check_limit <- function (n, verbose) {
   n <- n - 1
   if (n == 0) {
