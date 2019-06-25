@@ -12,19 +12,19 @@
 #'   returns voting records of all committees. Note that not all committees have
 #'   its voting records available. Defaults to `NULL`.
 #'
-#' @param meet_id The id of a meeting. If `NULL`, returns
-#'   voting records of all committee meetings. Note that not all committees have
-#'   its voting records available. Defaults to `NULL`.
+#' @param meet_id The id of a meeting. If `NULL`, returns voting records of all
+#'   committee meetings. Note that not all committees have its voting records
+#'   available. Defaults to `NULL`.
 #'
-#' @param from Only fetch results from hansards of meetings on or after this
-#'   date. Accepts character values in `'YYYY-MM-DD'` format, and objects of
-#'   class `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be
-#'   coerced to a date with `as.Date()`. Defaults to `'1900-01-01'`.
+#' @param from Only fetch votes conducted at or after this time. Accepts
+#'   character values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class
+#'   `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
+#'   to a time with `as.POSIXlt()`. Defaults to `'1900-01-01T00:00:00'`.
 #'
-#' @param to Only fetch results from hansards of meetings on or before this
-#'   date. Accepts character values in `'YYYY-MM-DD'` format, and objects of
-#'   class `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be
-#'   coerced to a date with `as.Date()`. Defaults to the current system date.
+#' @param to Only fetch votes conducted at or before this time. Accepts character
+#'   values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class `Date`,
+#'   `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
+#'   time with `as.POSIXlt()`. Defaults to system time.
 #'
 #' @param n The number of entry to fetch. Defaults to `50`.
 #'
@@ -33,11 +33,11 @@
 #' @export
 #' 
 member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_id = NULL,
-                                 meet_id = NULL, from = '1990-01-01', to = Sys.Date(),
+                                 meet_id = NULL, from = '1990-01-01T00:00:00', to = Sys.time(),
                                  n = 50, verbose = TRUE) {
   if (is.null(speaker_id) & is.null(member_id)) {
     message("Error: Please specifiy at least one LegCo member.")
-  } else {
+  } else { 
     members <- {} 
     
     if (!is.null(speaker_id)) {
@@ -78,7 +78,11 @@ member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_
                                name_ch = members, from = from, to = to, n = n, verbose = verbose)
     
     if (!is.null(df)) {
-      df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh", "NameCh", "NameEn", "Vote")]
+      df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh", "OverallResult",
+                 "NameCh", "NameEn", "Vote")]
+      if (verbose) {
+        message(paste(nrow(df), "record(s) match(es) your parameters."))
+      }
       
       df
     }
