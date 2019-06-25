@@ -57,6 +57,7 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL, type = "all"
     limit <-  limit - 1
     
     if (!is.null(df)) {
+      
       for (i in 1:nrow(df)) {
         # Locate range of Rundown ID of question
         hansard_id <- legco::rundown(df$RundownID[i], verbose = verbose)
@@ -84,6 +85,9 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL, type = "all"
         df$Question[i] <- list(question_txt)
         df$Answer[i] <- list(answer_txt)
         df$Misc[i] <- list(misc_txt)
+      }
+      if (verbose) {
+        message(paste(nrow(df), "record(s) match(es) your parameters."))
       }
       
       df

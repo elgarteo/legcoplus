@@ -29,6 +29,10 @@ all_members <- function(speaker_id = NULL, member_id = NULL, verbose = TRUE) {
     df <- df[df$SpeakerID %in% speaker_id | df$MemberID %in% member_id, ]
   }
   
+  if (verbose) {
+    message(paste(nrow(df), "record(s) match(es) your parameters."))
+  }
+  
   df
 }
 
