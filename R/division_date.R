@@ -2,7 +2,7 @@
 #'
 #' Fetch division(s) conducted on a specified date.
 #'
-#' @param division_time The date and time when the division(s) was/were conducted. Accepts
+#' @param target_date The date and time when the division(s) was/were conducted. Accepts
 #'   character values in `'YYYY-MM-DD'` format, and objects of class `Date`,
 #'   `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
 #'   date with `as.Date()`.

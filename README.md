@@ -11,6 +11,10 @@ To install this package, run:
 #devtools::install_github("elgarteo/legco")
 devtools::install_github("elgarteo/legcoplus")
 ```
+or
+```
+install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type="source")
+```
 
 ## What it does
 This R package is designed to work with the package [elgarteo/legco](https://github.com/elgarteo/legco). 

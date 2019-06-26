@@ -1,0 +1,16 @@
+authors:
+  Elgar Teo:
+    href: https://elgarteo.ga
+
+navbar:
+  left:
+    - icon: fa-home fa-lg
+      href: ./
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Base: legco"
+      href: ./..
+
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/elgarteo

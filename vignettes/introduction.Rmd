@@ -1,0 +1,73 @@
+---
+title: "Introduction to legcoplus"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+`legcoplus` is an R package to reorganise and present data from the Hong Kong Legislative Council (LegCo)
+APIs in a more useable manner. It provides functions that restructure data from multiple API requests to 
+enhance the efficiency of the use of LegCo's APIs.
+
+It requires the package [`legco`]("https://elgarteo.ga/legco/) to fetch LegCo's open data.
+
+## Prerequiste: Installing legco
+
+### From GitHub
+
+```{r, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("elgarteo/legco")
+```
+
+### From web
+
+```{r, eval = FALSE}
+install.packages("https://elgarteo.ga/legco/legco_0.0.9999.tar.gz", repos = NULL, type="source")
+```
+
+## Installing legcoplus
+
+### From GitHub
+
+```{r, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("elgarteo/legcoplus")
+```
+
+### From web
+
+```{r, eval = FALSE}
+install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type="source")
+```
+
+### Load legcoplus
+
+```{r}
+library(legcoplus)
+```
+
+## Using legcoplus
+
+### List of Functions
+
+The package contains the following functions:
+
+* `all_members()` searches everyone who speaks in LegCo with unique identifiers from different LegCo APIs'
+databases.
+* `answered_questions()` fetches more detailed information and the full text of questions put on the government
+by any given LegCo member.
+* `division_date()` searches all division(s) held in LegCo Council and committee meetings on any given date.
+* `member_voting_record()` returns the voting record in LegCo Council and committee meetings of any given
+LegCo member.
+
+All functions can also be accessed with the prefix `legco_`, e.g. `legco_all_members()` and `all_members()`
+return the same result.
+
+### Examples
+
+The unique identifiers of different LegCo databases are not interchangeable. The most notable exmaple is 
+`'MemberID'`
