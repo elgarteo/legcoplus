@@ -35,51 +35,53 @@ all_members <- function(speaker_id = NULL, member_id = NULL, name = NULL, verbos
   
   # Drop rows if name search string specified
   if (!is.null(name)) {
-    if (grep("[^\001-\177]", name)) { # Detect language of input
+    if (length(grep("[^\001-\177]", name)) == 1) { # Detect language of input
       # If Chinese
       index <- which(df$NameChi %in% name)
       index <- c(index, which(df$SurnameChi %in% name))
       index <- c(index, which(df$FirstnameChi %in% name))
       
       if (!length(index)) {
-        index <- search_columns(unlist(strsplit(name, ""), "",
+        index <- search_columns(unlist(strsplit(name, "")), "",
                                        df$NameChi,
                                        df$SurnameChi,
-                                       df$FirstnameChi))
+                                       df$FirstnameChi)
       }
     } else {
       # If English
-      name_tmp <- tolower(name)
-      name_tmp <- gsub("-", " ", name_tmp)
+      name_tmp <- tolower(gsub("-", " ", name))
+      fullname_tmp <- tolower(gsub("-", " ", df$NameEng))
+      surname_tmp <- tolower(df$SurnameEng)
+      firstname_tmp <- tolower(gsub("-", " ", df$FirstnameEng))
+      engname_tmp <- tolower(df$EnglishName)
       
-      index <- which(tolower(df$NameEng) %in% name_tmp)
-      index <- c(index, which(tolower(df$SurnameEng) %in% name_tmp))
-      tmp <- gsub("-", " ", df$FirstnameEng)
-      index <- c(index, which(tolower(tmp) %in% name_tmp))
-      index <- c(index, which(tolower(df$EnglishName) %in% name_tmp))
+      index <- which(fullname_tmp %in% name_tmp)
+      index <- c(index, which(surname_tmp %in% name_tmp))
+      index <- c(index, which(firstname_tmp %in% name_tmp))
+      index <- c(index, which(engname_tmp %in% name_tmp))
       
       if (!length(index)) {
-        index <- search_columns(unlist(strsplit(name_tmp, " "), " ",
-                                       df$NameEng,
-                                       df$SurnameEng,
-                                       gsub("-", " ", df$FirstnameEng),
-                                       df$EnglishName))
+        index <- search_columns(unlist(strsplit(name_tmp, " ")), " ",
+                                       fullname_tmp,
+                                       surname_tmp,
+                                       firstname_tmp,
+                                       engname_tmp)
       }
     }
     
     if (length(index) > 0) {
       df <- df[index, ]
+      rownames(df) <- 1:nrow(df)
     } else {
       message(paste0("Error: Could not find any matching result for search term \"", name, "\"."))
       df <- NULL
     }
   }
-  
-  if (verbose) {
-    message(paste(nrow(df), "record(s) match(es) your parameters."))
-  }
-  
+
   if (!is.null(df)) {
+    if (verbose) {
+      message(paste(nrow(df), "record(s) match(es) your parameters."))
+    }
     
     df
   }

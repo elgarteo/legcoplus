@@ -22,11 +22,11 @@ search_columns <- function(search_term, split_chr, ...) {
   index <- {}
   for (i in 1:length(name_list[[1]])) {
     for (n in 1:length(name_list)) {
-      tmp <- unlist(strsplit(name_list[[n]][i], split_chr))
-      if (sum(tmp %in% search_term) != 0) {
+      tmp <- unlist(strsplit(name_list[[n]][i], split_chr)) # Split into individual characters/words
+      if (sum(tmp %in% search_term) != 0) { # Locate index of string containing the keyword
         index <- c(index, i)
       }
     }
   }
-  index
+  unique(index)
 }
