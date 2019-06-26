@@ -13,7 +13,7 @@ devtools::install_github("elgarteo/legcoplus")
 ```
 or
 ```
-install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type="source")
+install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
 ```
 
 ## What it does

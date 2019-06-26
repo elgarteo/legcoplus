@@ -5,17 +5,22 @@
 \alias{legco_all_members}
 \title{All LegCo Members}
 \usage{
-all_members(speaker_id = NULL, member_id = NULL, verbose = TRUE)
+all_members(speaker_id = NULL, member_id = NULL, name = NULL,
+  verbose = TRUE)
 
-legco_all_members(speaker_id = NULL, member_id = NULL,
+legco_all_members(speaker_id = NULL, member_id = NULL, name = NULL,
   verbose = TRUE)
 }
 \arguments{
 \item{speaker_id}{The Speaker ID, or a vector of IDs, as specified in the
 output from the function `legco::speakers()`. Defaults to `NULL`.}
 
-\item{member_id}{The member ID, or a vector of IDs, as specified in the output of the
-function `legco::member()`. Defaults to `NULL`.}
+\item{member_id}{The member ID, or a vector of IDs, as specified in the
+output of the function `legco::member()`. Defaults to `NULL`.}
+
+\item{name}{Search string of member's name. Accepts Chinese or English full
+or partial name. If no full match found, return closest match. Defaults to
+`NULL`.}
 
 \item{verbose}{Defaults to `TRUE`.}
 }

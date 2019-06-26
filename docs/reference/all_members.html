@@ -113,9 +113,10 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>all_members</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>all_members</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>legco_all_members</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>legco_all_members</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -128,8 +129,14 @@ output from the function `legco::speakers()`. Defaults to `NULL`.</p></td>
     </tr>
     <tr>
       <th>member_id</th>
-      <td><p>The member ID, or a vector of IDs, as specified in the output of the
-function `legco::member()`. Defaults to `NULL`.</p></td>
+      <td><p>The member ID, or a vector of IDs, as specified in the
+output of the function `legco::member()`. Defaults to `NULL`.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>Search string of member's name. Accepts Chinese or English full
+or partial name. If no full match found, return closest match. Defaults to
+`NULL`.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
