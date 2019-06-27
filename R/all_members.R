@@ -42,18 +42,22 @@ all_members <- function(speaker_id = NULL, member_id = NULL, name = NULL, verbos
       index <- c(index, which(df$FirstnameChi %in% name))
       
       if (!length(index)) {
-        index <- search_columns(unlist(strsplit(name, "")), "",
-                                       df$NameChi,
-                                       df$SurnameChi,
-                                       df$FirstnameChi)
+        index <- search_columns(name, "",
+                                df$NameChi,
+                                df$SurnameChi,
+                                df$FirstnameChi)
       }
     } else {
       # If English
       name_tmp <- tolower(gsub("-", " ", name))
       fullname_tmp <- tolower(gsub("-", " ", df$NameEng))
+      fullname_tmp <- gsub("^ | $", "", fullname_tmp) # Remove unnecessary space
       surname_tmp <- tolower(df$SurnameEng)
+      surname_tmp <- gsub("^ | $", "", surname_tmp)
       firstname_tmp <- tolower(gsub("-", " ", df$FirstnameEng))
+      firstname_tmp <- gsub("^ | $", "", firstname_tmp)
       engname_tmp <- tolower(df$EnglishName)
+      engname_tmp <- gsub("^ | $", "", engname_tmp)
       
       index <- which(fullname_tmp %in% name_tmp)
       index <- c(index, which(surname_tmp %in% name_tmp))
@@ -61,11 +65,11 @@ all_members <- function(speaker_id = NULL, member_id = NULL, name = NULL, verbos
       index <- c(index, which(engname_tmp %in% name_tmp))
       
       if (!length(index)) {
-        index <- search_columns(unlist(strsplit(name_tmp, " ")), " ",
-                                       fullname_tmp,
-                                       surname_tmp,
-                                       firstname_tmp,
-                                       engname_tmp)
+        index <- search_columns(name_tmp, " ",
+                                fullname_tmp,
+                                surname_tmp,
+                                firstname_tmp,
+                                engname_tmp)
       }
     }
     

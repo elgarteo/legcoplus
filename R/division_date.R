@@ -2,10 +2,10 @@
 #'
 #' Fetch division(s) conducted on a specified date.
 #'
-#' @param target_date The date and time when the division(s) was/were conducted. Accepts
-#'   character values in `'YYYY-MM-DD'` format, and objects of class `Date`,
-#'   `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
-#'   date with `as.Date()`.
+#' @param target_date The date and time when the division(s) was/were conducted.
+#'   Accepts character values in `'YYYY-MM-DD'` format, and objects of class
+#'   `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
+#'   to a date with `as.Date()`.
 #'
 #' @param committee_id The id of a committee, or a vector of IDs. If `NULL`,
 #'   returns voting records of all committees. Note that not all committees have
@@ -21,7 +21,7 @@
 #' 
 division_date <- function(target_date = NULL, committee_id = NULL, meet_id = NULL, 
                           verbose = TRUE) {
-  if (is.null(division_date)) {
+  if (is.null(target_date)) {
     message("Error: Please specifiy the date.")
   } else {
     target_date <- as.Date(target_date)
@@ -62,7 +62,7 @@ division_date <- function(target_date = NULL, committee_id = NULL, meet_id = NUL
                  "FcAbstainCount", "FcResult", "OverallPresentCount",
                  "OverallVoteCount", "OverallYesCount", "OverallNoCount",
                  "OverallAbstainCount", "OverallResult")]
-      df <- df[!duplicated(df$VoteTime),]
+      df <- df[!duplicated(df$VoteTime), ]
       
       if (verbose) {
         message(paste(nrow(df), "record(s) match(es) your parameters."))
@@ -72,6 +72,7 @@ division_date <- function(target_date = NULL, committee_id = NULL, meet_id = NUL
     }
   }
 }
+
 #' @rdname division_date
 #' @export
-legco_member_division_date <- division_date
+legco_division_date <- division_date

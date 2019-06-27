@@ -2,20 +2,20 @@
 % Please edit documentation in R/division_date.R
 \name{division_date}
 \alias{division_date}
-\alias{legco_member_division_date}
+\alias{legco_division_date}
 \title{Division by Date}
 \usage{
 division_date(target_date = NULL, committee_id = NULL,
   meet_id = NULL, verbose = TRUE)
 
-legco_member_division_date(target_date = NULL, committee_id = NULL,
+legco_division_date(target_date = NULL, committee_id = NULL,
   meet_id = NULL, verbose = TRUE)
 }
 \arguments{
-\item{target_date}{The date and time when the division(s) was/were conducted. Accepts
-character values in `'YYYY-MM-DD'` format, and objects of class `Date`,
-`POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
-date with `as.Date()`.}
+\item{target_date}{The date and time when the division(s) was/were conducted.
+Accepts character values in `'YYYY-MM-DD'` format, and objects of class
+`Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
+to a date with `as.Date()`.}
 
 \item{committee_id}{The id of a committee, or a vector of IDs. If `NULL`,
 returns voting records of all committees. Note that not all committees have

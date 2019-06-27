@@ -6,8 +6,11 @@
 #' @param speaker_id The Speaker ID, or a vector of IDs, as specified in the
 #'   output from the function `legco::speakers()`. Defaults to `NULL`.
 #'
-#' @param member_id The member ID, or a vector of IDs, as specified in the output of the
-#'   function `legco::member()`. Defaults to `NULL`.
+#' @param member_id The member ID, or a vector of IDs, as specified in the
+#'   output of the function `legco::member()`. Defaults to `NULL`.
+#'
+#' @param rundown_id The id of a rundown, or a vector of ids, as specified in
+#'   the output of the function `legco::rundown()`. Defaults to `NULL`.
 #'
 #' @param lang The language of hansard files to search from. `'en'` returns the
 #'   English version. `'zh'` returns the Traditional Chinese version. Defaults
@@ -38,26 +41,27 @@
 #'
 #' @export
 #' 
-answered_questions <- function(speaker_id = NULL, member_id = NULL, type = "all", 
-                               lang = "en", from = '1900-01-01', to = Sys.Date(), 
+answered_questions <- function(speaker_id = NULL, member_id = NULL,
+                               rundown_id = NULL, type = "all", lang = "en",
+                               from = '1900-01-01', to = Sys.Date(), 
                                floor = FALSE, n = 50, verbose = TRUE) {
-  if (is.null(speaker_id) & is.null(member_id)) {
-    message("Error: Please specifiy at least one LegCo member.")
+  if (is.null(speaker_id) & is.null(member_id) & is.null(rundown_id)) {
+    message("Error: Please specifiy at least one LegCo member or Rundown ID.")
   } else {
     limit <- set_limit()
     
-    if (is.null(speaker_id)) {
+    if (!is.null(member_id)) {
       tmp <- all_members(member_id = member_id, verbose = verbose)
       limit <- limit - 3
-      speaker_id <- tmp$SpeakerID
+      speaker_id <- c(speaker_id, tmp$SpeakerID)
     }
     
-    df <- legco::questions(speaker_id = speaker_id, type = type, lang = lang,
-                           from = from, to = to, floor = floor, n = n, verbose = verbose)
+    df <- legco::questions(speaker_id = speaker_id, rundown_id = rundown_id,
+                           type = type, lang = lang, from = from,
+                           to = to, floor = floor, n = n, verbose = verbose)
     limit <-  limit - 1
     
     if (!is.null(df)) {
-      
       for (i in 1:nrow(df)) {
         # Locate range of Rundown ID of question
         hansard_id <- legco::rundown(df$RundownID[i], verbose = verbose)
@@ -73,19 +77,21 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL, type = "all"
         full_txt <- full_txt[order(full_txt$RundownID), ]
         
         # Identify Speaker ID of answering public officer
-        answering_speaker_id <- full_txt$SpeakerID[!full_txt$SpeakerID %in% c(1, df$SpeakerID[i])][1]
+        answering_speaker_id <- unique(full_txt$SpeakerID[full_txt$SpeakerID %in% 6:32])
         
         # Categorise by Speaker ID
-        answer_txt <- full_txt$Content[full_txt$SpeakerID == answering_speaker_id]
+        answer_txt <- full_txt$Content[full_txt$SpeakerID %in% 6:32]
         # Remarks made by LegCo appointment holders (e.g. President)
         misc_txt <- full_txt$Content[full_txt$SpeakerID %in% 1:5]
-        question_txt <- full_txt$Content[!full_txt$Content %in% c(answer_txt, misc_txt)]
+        question_txt <- full_txt$Content[!full_txt$SpeakerID %in% 1:32]
         
-        df$AnsweringSpeakerID <- answering_speaker_id
+        df$AskingSpeakerID <- list(unique(full_txt$SpeakerID[!full_txt$SpeakerID %in% 1:32]))
+        df$AnsweringSpeakerID <- list(answering_speaker_id)
         df$Question[i] <- list(question_txt)
         df$Answer[i] <- list(answer_txt)
         df$Misc[i] <- list(misc_txt)
       }
+      
       if (verbose) {
         message(paste(nrow(df), "record(s) match(es) your parameters."))
       }

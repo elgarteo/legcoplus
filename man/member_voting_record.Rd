@@ -33,10 +33,10 @@ character values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class
 `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
 to a time with `as.POSIXlt()`. Defaults to `'1900-01-01T00:00:00'`.}
 
-\item{to}{Only fetch votes conducted at or before this time. Accepts character
-values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class `Date`,
-`POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
-time with `as.POSIXlt()`. Defaults to system time.}
+\item{to}{Only fetch votes conducted at or before this time. Accepts
+character values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class
+`Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
+to a time with `as.POSIXlt()`. Defaults to system time.}
 
 \item{n}{The number of entry to fetch. Defaults to `50`.}
 
