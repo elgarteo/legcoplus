@@ -114,11 +114,11 @@
     </div>
 
     <pre class="usage"><span class='fu'>member_voting_record</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meet_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1990-01-01T00:00:00"</span>,
+  <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>slot_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1990-01-01T00:00:00"</span>,
   <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>(), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>legco_member_voting_record</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meet_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1990-01-01T00:00:00"</span>,
+  <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>slot_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1990-01-01T00:00:00"</span>,
   <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.time</a></span>(), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -141,8 +141,8 @@ returns voting records of all committees. Note that not all committees have
 its voting records available. Defaults to `NULL`.</p></td>
     </tr>
     <tr>
-      <th>meet_id</th>
-      <td><p>The id of a meeting. If `NULL`, returns voting records of all
+      <th>slot_id</th>
+      <td><p>The id of a meeting slot. If `NULL`, returns voting records of all
 committee meetings. Note that not all committees have its voting records
 available. Defaults to `NULL`.</p></td>
     </tr>
@@ -155,10 +155,10 @@ to a time with `as.POSIXlt()`. Defaults to `'1900-01-01T00:00:00'`.</p></td>
     </tr>
     <tr>
       <th>to</th>
-      <td><p>Only fetch votes conducted at or before this time. Accepts character
-values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class `Date`,
-`POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
-time with `as.POSIXlt()`. Defaults to system time.</p></td>
+      <td><p>Only fetch votes conducted at or before this time. Accepts
+character values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class
+`Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
+to a time with `as.POSIXlt()`. Defaults to system time.</p></td>
     </tr>
     <tr>
       <th>n</th>

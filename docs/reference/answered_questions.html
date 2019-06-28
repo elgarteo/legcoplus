@@ -115,13 +115,15 @@ LegCo member(s).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>answered_questions</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"all"</span>,
-  <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"en"</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1900-01-01"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>(), <span class='kw'>floor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>answered_questions</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>rundown_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"en"</span>,
+  <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1900-01-01"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>(), <span class='kw'>floor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>legco_answered_questions</span>(<span class='kw'>speaker_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>member_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"en"</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1900-01-01"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>(),
-  <span class='kw'>floor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>rundown_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"all"</span>, <span class='kw'>lang</span> <span class='kw'>=</span> <span class='st'>"en"</span>,
+  <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"1900-01-01"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Sys.time'>Sys.Date</a></span>(), <span class='kw'>floor</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,8 +135,13 @@ output from the function `legco::speakers()`. Defaults to `NULL`.</p></td>
     </tr>
     <tr>
       <th>member_id</th>
-      <td><p>The member ID, or a vector of IDs, as specified in the output of the
-function `legco::member()`. Defaults to `NULL`.</p></td>
+      <td><p>The member ID, or a vector of IDs, as specified in the
+output of the function `legco::member()`. Defaults to `NULL`.</p></td>
+    </tr>
+    <tr>
+      <th>rundown_id</th>
+      <td><p>The id of a rundown, or a vector of ids, as specified in
+the output of the function `legco::rundown()`. Defaults to `NULL`.</p></td>
     </tr>
     <tr>
       <th>type</th>

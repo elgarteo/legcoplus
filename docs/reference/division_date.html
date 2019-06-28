@@ -116,7 +116,7 @@
     <pre class="usage"><span class='fu'>division_date</span>(<span class='kw'>target_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>meet_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>legco_member_division_date</span>(<span class='kw'>target_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>legco_division_date</span>(<span class='kw'>target_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>meet_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -124,10 +124,10 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>target_date</th>
-      <td><p>The date and time when the division(s) was/were conducted. Accepts
-character values in `'YYYY-MM-DD'` format, and objects of class `Date`,
-`POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced to a
-date with `as.Date()`.</p></td>
+      <td><p>The date and time when the division(s) was/were conducted.
+Accepts character values in `'YYYY-MM-DD'` format, and objects of class
+`Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
+to a date with `as.Date()`.</p></td>
     </tr>
     <tr>
       <th>committee_id</th>
