@@ -20,12 +20,18 @@ check_limit <- function (n, verbose) {
 search_columns <- function(search_term, split_chr, ...) {
   name_list <- list(...)
   index <- {}
-  search_term <- unlist(strsplit(search_term, split_str))
+  match <- as.logical()
+  search_term <- unlist(strsplit(search_term, split_chr))
   for (i in 1:length(name_list[[1]])) {
     for (n in 1:length(name_list)) {
       tmp <- unlist(strsplit(name_list[[n]][i], split_chr)) # Split into individual characters/words
-      if (sum(tmp %in% search_term) != 0) { # Locate index of string containing the keyword
+      for (j in 1:length(search_term)) {
+        # Flag TRUE if match found
+        match[j] <- ifelse(sum(tmp %in% search_term[j]) != 0, TRUE, FALSE)
+      }
+      if (sum(match) == length(search_term)) { # Locate index of match
         index <- c(index, i)
+        break
       }
     }
   }
