@@ -1,43 +1,42 @@
-#' Division by Date
+#' Search Division
 #'
-#' Fetch division(s) conducted on a specified date.
+#' Fetch division(s) (votes) conducted by a given comittee(s) or on a given date
+#' or during a given meeting slot. Note that only voting records from the
+#' Council, House Committee, Finance Committee and its subcomittees are
+#' available.
 #'
 #' @param target_date The date and time when the division(s) was/were conducted.
 #'   Accepts character values in `'YYYY-MM-DD'` format, and objects of class
 #'   `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
 #'   to a date with `as.Date()`.
 #'
-#' @param committee_id The id of a committee, or a vector of IDs. If `NULL`,
-#'   returns voting records of all committees. Note that not all committees have
-#'   its voting records available. Defaults to `NULL`.
+#' @param committee_id The id of a committee, or a vector of IDs.
 #'
-#' @param meet_id The id of a meeting. If `NULL`, returns voting records of all
-#'   committee meetings. Note that not all committees have its voting records
-#'   available. Defaults to `NULL`.
+#' @param slot_id The id of a meeting slot. If `NULL`, returns voting records of
+#'   all committee meetings.
 #'
 #' @param verbose Defaults to `TRUE`.
 #'
 #' @export
 #' 
-division_date <- function(target_date = NULL, committee_id = NULL, meet_id = NULL, 
+search_division <- function(target_date = NULL, committee_id = NULL, slot_id = NULL, 
                           verbose = TRUE) {
-  if (is.null(target_date)) {
-    message("Error: Please specifiy the date.")
+  if (is.null(target_date) & is.null(committee_id) & is.null(slot_id)) {
+    message("Error: Please specifiy the date, a committee or a meeting slot.")
   } else {
-    target_date <- as.Date(target_date)
-    from <- paste0(target_date, "T00:00:00")
-    to <- paste0(target_date, "T23:59:59")
+    if (!is.null(target_date)) {
+      target_date <- as.Date(target_date)
+      from <- paste0(target_date, "T00:00:00")
+      to <- paste0(target_date, "T23:59:59")
+    }
     
-    if (!is.null(meet_id)) {
-      if (length(meet_id > 1)) {
-        message("Error: Please enter only one Meet ID.")
+    if (!is.null(slot_id)) {
+      if (length(slot_id > 1)) {
+        message("Error: Please enter only one Slot ID.")
       } else {
-        tmp <- legco::meeting(meet_id, verbose = verbose)
-        meeting_date <- tmp$StartDateTime
-        meeting_date <- as.Date(meeting_date)
-        from <- meeting_date
-        to <- meeting_date
-        tmp <- legco::meeting_committee(meet_id, verbose = verbose)
+        tmp <- legco::meeting_committee(slot_id, verbose = verbose)
+        from <- as.Date(tmp$StartDateTime)
+        to <- as.Date(tmp$StartDateTime)
         committee_id <- tmp$CommitteeID
       }
     }
@@ -73,6 +72,6 @@ division_date <- function(target_date = NULL, committee_id = NULL, meet_id = NUL
   }
 }
 
-#' @rdname division_date
+#' @rdname search_division
 #' @export
-legco_division_date <- division_date
+legco_search_division <- search_division
