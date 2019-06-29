@@ -65,7 +65,7 @@ division_date <- function(target_date = NULL, committee_id = NULL, meet_id = NUL
       df <- df[!duplicated(df$VoteTime), ]
       
       if (verbose) {
-        message(paste(nrow(df), "record(s) match(es) your parameters."))
+        message(nrow(df), "record(s) match(es) your parameters.")
       }
       
       df

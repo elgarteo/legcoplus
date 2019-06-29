@@ -35,13 +35,13 @@ search_committee <- function(search_term, verbose = TRUE) {
     df <- df[index, ]
     rownames(df) <- 1:nrow(df)
   } else {
-    message(paste0("Error: Could not find any matching result for search term \"", search_term, "\"."))
+    message("Error: Could not find any matching result for search term \"", search_term, "\".")
     df <- NULL
   }
   
   if (!is.null(df)) {
     if (verbose) {
-      message(paste(nrow(df), "record(s) match(es) your parameters."))
+      message(nrow(df), " record(s) match(es) your parameters.")
     }
     
     df

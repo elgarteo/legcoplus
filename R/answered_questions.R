@@ -93,7 +93,7 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL,
       }
       
       if (verbose) {
-        message(paste(nrow(df), "record(s) match(es) your parameters."))
+        message(nrow(df), " record(s) match(es) your parameters.")
       }
       
       df

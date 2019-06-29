@@ -36,10 +36,10 @@ search_meeting <- function(committee_id, from = "1990-01-01",
     }
     
     if (is.null(df)) {
-      message(paste0("No meeting found for Committee ID ", committee_id, "."))
+      message("No meeting found for Committee ID ", committee_id, ".")
     } else {
       if (verbose) {
-        message(paste(nrow(df), "record(s) match(es) your parameters."))
+        message(nrow(df), "record(s) match(es) your parameters.")
       }
       
       df

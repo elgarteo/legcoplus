@@ -77,14 +77,14 @@ all_members <- function(speaker_id = NULL, member_id = NULL, name = NULL, verbos
       df <- df[index, ]
       rownames(df) <- 1:nrow(df)
     } else {
-      message(paste0("Error: Could not find any matching result for search term \"", name, "\"."))
+      message("Error: Could not find any matching result for search term \"", name, "\".")
       df <- NULL
     }
   }
 
   if (!is.null(df)) {
     if (verbose) {
-      message(paste(nrow(df), "record(s) match(es) your parameters."))
+      message(nrow(df), "record(s) match(es) your parameters.")
     }
     
     df
