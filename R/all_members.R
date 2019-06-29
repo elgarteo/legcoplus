@@ -84,7 +84,7 @@ all_members <- function(speaker_id = NULL, member_id = NULL, name = NULL, verbos
 
   if (!is.null(df)) {
     if (verbose) {
-      message(nrow(df), "record(s) match(es) your parameters.")
+      message(nrow(df), " record(s) match(es) your parameters.")
     }
     
     df

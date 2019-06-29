@@ -166,7 +166,7 @@ w <- search_division(target_date = "2019-04-03", committee_id = 2943)
 w
 
 # Search all votes conducted by the 
-w <- search_division(committee)
+w <- search_division(committee_id = 2943)
 ```
 
 It is also possible to specify the committee or meeting by Committee ID
