@@ -6,11 +6,11 @@
 \title{Voting Records of a LegCo Member}
 \usage{
 member_voting_record(speaker_id = NULL, member_id = NULL,
-  committee_id = NULL, meet_id = NULL, from = "1990-01-01T00:00:00",
+  committee_id = NULL, slot_id = NULL, from = "1990-01-01T00:00:00",
   to = Sys.time(), n = 50, verbose = TRUE)
 
 legco_member_voting_record(speaker_id = NULL, member_id = NULL,
-  committee_id = NULL, meet_id = NULL, from = "1990-01-01T00:00:00",
+  committee_id = NULL, slot_id = NULL, from = "1990-01-01T00:00:00",
   to = Sys.time(), n = 50, verbose = TRUE)
 }
 \arguments{
@@ -24,7 +24,7 @@ LegCo members. Defaults to `NULL`.}
 returns voting records of all committees. Note that not all committees have
 its voting records available. Defaults to `NULL`.}
 
-\item{meet_id}{The id of a meeting. If `NULL`, returns voting records of all
+\item{slot_id}{The id of a meeting slot. If `NULL`, returns voting records of all
 committee meetings. Note that not all committees have its voting records
 available. Defaults to `NULL`.}
 

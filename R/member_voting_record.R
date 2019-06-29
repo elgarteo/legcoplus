@@ -12,7 +12,7 @@
 #'   returns voting records of all committees. Note that not all committees have
 #'   its voting records available. Defaults to `NULL`.
 #'
-#' @param meet_id The id of a meeting. If `NULL`, returns voting records of all
+#' @param slot_id The id of a meeting slot. If `NULL`, returns voting records of all
 #'   committee meetings. Note that not all committees have its voting records
 #'   available. Defaults to `NULL`.
 #'
@@ -33,7 +33,7 @@
 #' @export
 #' 
 member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_id = NULL,
-                                 meet_id = NULL, from = '1990-01-01T00:00:00', to = Sys.time(),
+                                 slot_id = NULL, from = '1990-01-01T00:00:00', to = Sys.time(),
                                  n = 50, verbose = TRUE) {
   if (is.null(speaker_id) & is.null(member_id)) {
     message("Error: Please specifiy at least one LegCo member.")
@@ -51,16 +51,13 @@ member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_
       members <- c(members, tmp)
     }
     
-    if (!is.null(meet_id)) {
-      if (length(meet_id > 1)) {
-        message("Error: Please enter only one Meet ID.")
+    if (!is.null(slot_id)) {
+      if (length(slot_id > 1)) {
+        message("Error: Please enter only one Slot ID.")
       } else {
-        tmp <- legco::meeting(meet_id, verbose = verbose)
-        meeting_date <- tmp$StartDateTime
-        meeting_date <- as.Date(meeting_date)
-        from <- meeting_date
-        to <- meeting_date
-        tmp <- legco::meeting_committee(meet_id, verbose = verbose)
+        tmp <- legco::meeting_committee(slot_id, verbose = verbose)
+        from <- as.Date(tmp$StartDateTime)
+        to <- as.Date(tmp$StartDateTime)
         committee_id <- tmp$CommitteeID
       }
     }

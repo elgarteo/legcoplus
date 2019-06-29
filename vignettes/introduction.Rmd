@@ -26,7 +26,7 @@ devtools::install_github("elgarteo/legco")
 ### From web
 
 ```{r, eval = FALSE}
-install.packages("https://elgarteo.ga/legco/legco_0.0.9999.tar.gz", repos = NULL, type="source")
+install.packages("https://elgarteo.ga/legco/legco_0.0.9999.tar.gz", repos = NULL, type = "source")
 ```
 
 ## Installing legcoplus
@@ -41,7 +41,7 @@ devtools::install_github("elgarteo/legcoplus")
 ### From web
 
 ```{r, eval = FALSE}
-install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type="source")
+install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
 ```
 
 ### Load legcoplus
@@ -57,17 +57,124 @@ library(legcoplus)
 The package contains the following functions:
 
 * `all_members()` searches everyone who speaks in LegCo with unique identifiers from different LegCo APIs'
-databases.
+databases or full or partial name. [Example](#all_members)
 * `answered_questions()` fetches more detailed information and the full text of questions put on the government
-by any given LegCo member.
-* `division_date()` searches all division(s) held in LegCo Council and committee meetings on any given date.
+by any given LegCo member. [Example](#answered_questions)
+* `search_committee()` searches committee by full or partial name of committee.
+* `search_division()` searches all division(s) (or votes) held in LegCo Council, House Committee,
+Finance Committe and its subcommittees meetings on any given date, by any given committee/subcommittee
+or during any given meeting slot. [Example](#search_division)
 * `member_voting_record()` returns the voting record in LegCo Council and committee meetings of any given
-LegCo member.
+LegCo member. [Example](#member_voting_record)
 
 All functions can also be accessed with the prefix `legco_`, e.g. `legco_all_members()` and `all_members()`
 return the same result.
 
-### Examples
+### `all_members()` {#all_members}
 
 The unique identifiers of different LegCo databases are not interchangeable. The most notable exmaple is 
-`'MemberID'`
+'Speaker ID' used in the Hansard Database and 'Member ID' used in the Schedule Database. `all_members()` 
+provides an easy way to work with 'Speaker ID' and 'Member ID' interchangeably:
+
+```{r, message = FALSE}
+# A combined list of all members from legco::speakers() and legco::member()
+w <- all_members()
+w[63:64, ]
+
+# Lookup the Member ID of Speaker ID 63
+w <- all_members(speaker_id = 63)
+w$MemberID
+
+# Lookup the Speaker ID of Member ID 63
+w <- all_members(member_id = 273)
+w$SpeakerID
+```
+
+`all_members()` also allows searching by full or partial name in English or Chinese:
+
+```{r, message = FALSE}
+# Lookup members with "謙" in their names
+all_members(name = "謙")
+
+# Lookup members with "ting" in their names
+all_members(name = "ting")
+
+```
+
+### `answered_questions()` {#answered_questions}
+
+The function `legco::questions()` returns only the subject of the question put on the government 
+but not the full text and the answering body:
+
+```{r, message = FALSE}
+legco::questions(rundown_id = 294209)
+```
+
+While the function `answered_questions()` fetches the question text and other detailed information as well:
+
+```{r, message = FALSE}
+w <- answered_questions(rundown_id = 294209)
+# All asking members (including supplementary questions)
+legco::speakers(w$AskingSpeakerID)
+
+# The answering official of the question
+legco::speakers(w$AnsweringSpeakerID)
+
+# Excerpts of the question text
+w$Question[[1]][11]
+
+# Excerpts of the answer text
+w$Answer[[1]][8]
+
+# Excerpts of key appointment holders (e.g. President)/LegCo staff
+w$Misc[[1]][10]
+```
+
+It is also possible to fetch all questions raised by any given member and filter by parameters
+that are supported by `legco::questions()`.
+
+```{r, message = FALSE}
+# Search questions asked by Speaker ID 61 and Member ID 209 from January to April 2019 in Chinese
+w <- answered_questions(speaker_id = 61, member_id = 209,
+                        from = "2019-01-01", to ="2019-04-30",
+                        type = "written", lang = "zh")
+w[, 1:5]
+```
+
+### `search_committee()` {#search_committee}
+
+The function `search_committee` allows searching committee with full or partial name of the committee:
+
+```{r, message = FALSE}
+# Search all Bills Committees established in the fixth term of LegCo
+w <- search_committee(search_term = "Bills Committee", term_id = 5)
+w[1:4, 1:4]
+
+# Search 
+```
+
+### `search_division()` {#search_division}
+
+The LegCo Voting Result Database does not provide a full list of votes that have taken place 
+in Council and committee meetings. With the function `search_division()`, it is possible to 
+search the list of division(s) conducted on any given date, by any given committee or during
+any given meeting slot:
+
+```{r, message = FALSE}
+# Search votes conducted on April 3, 2019 by the Establishment Subcommittee
+w <- search_division(target_date = "2019-04-03", committee_id = 2943)
+w
+
+# Search all votes conducted by the 
+w <- search_division(committee)
+```
+
+It is also possible to specify the committee or meeting by Committee ID
+(from `legco::committee()`) and Meet ID (from `legco::meeting()`) as well:
+#----search_committee() and search_meeting()----
+
+```{r, message = FALSE}
+# Search votes conducted on April 3, 2019 in the Council Meeting
+#w <- division_date(committee_id)
+
+```

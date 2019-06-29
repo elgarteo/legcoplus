@@ -5,13 +5,16 @@
 \alias{legco_search_committee}
 \title{Search Committee}
 \usage{
-search_committee(search_term, verbose = TRUE)
+search_committee(search_term, term_id = NULL, verbose = TRUE)
 
-legco_search_committee(search_term, verbose = TRUE)
+legco_search_committee(search_term, term_id = NULL, verbose = TRUE)
 }
 \arguments{
 \item{search_term}{The search term. Accept full or partial Chinese or English
 name of a committee.}
+
+\item{term_id}{The id of a term, or a vector of ids. If `NULL`, searches
+committees from all terms. Defaults to `NULL`.}
 
 \item{verbose}{Defaults to `TRUE`.}
 }

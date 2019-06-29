@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Division by Date — division_date • legcoplus</title>
+<title>Search Committee — search_committee • legcoplus</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Division by Date — division_date" />
+<meta property="og:title" content="Search Committee — search_committee" />
 
-<meta property="og:description" content="Fetch division(s) conducted on a specified date." />
+<meta property="og:description" content="Search committee by full or partial name of committee." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,44 +102,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Division by Date</h1>
+    <h1>Search Committee</h1>
     
-    <div class="hidden name"><code>division_date.Rd</code></div>
+    <div class="hidden name"><code>search_committee.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Fetch division(s) conducted on a specified date.</p>
+    <p>Search committee by full or partial name of committee.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>division_date</span>(<span class='kw'>target_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>meet_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>search_committee</span>(<span class='no'>search_term</span>, <span class='kw'>term_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>legco_division_date</span>(<span class='kw'>target_date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>committee_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>meet_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>legco_search_committee</span>(<span class='no'>search_term</span>, <span class='kw'>term_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>target_date</th>
-      <td><p>The date and time when the division(s) was/were conducted.
-Accepts character values in `'YYYY-MM-DD'` format, and objects of class
-`Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
-to a date with `as.Date()`.</p></td>
+      <th>search_term</th>
+      <td><p>The search term. Accept full or partial Chinese or English
+name of a committee.</p></td>
     </tr>
     <tr>
-      <th>committee_id</th>
-      <td><p>The id of a committee, or a vector of IDs. If `NULL`,
-returns voting records of all committees. Note that not all committees have
-its voting records available. Defaults to `NULL`.</p></td>
-    </tr>
-    <tr>
-      <th>meet_id</th>
-      <td><p>The id of a meeting. If `NULL`, returns voting records of all
-committee meetings. Note that not all committees have its voting records
-available. Defaults to `NULL`.</p></td>
+      <th>term_id</th>
+      <td><p>The id of a term, or a vector of ids. If `NULL`, searches
+committees from all terms. Defaults to `NULL`.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
