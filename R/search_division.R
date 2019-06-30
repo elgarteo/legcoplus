@@ -31,7 +31,7 @@ search_division <- function(target_date = NULL, committee_id = NULL, slot_id = N
     }
     
     if (!is.null(slot_id)) {
-      if (length(slot_id > 1)) {
+      if (length(slot_id) > 1) {
         message("Error: Please enter only one Slot ID.")
       } else {
         tmp <- legco::meeting_committee(slot_id, verbose = verbose)
