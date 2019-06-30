@@ -163,10 +163,9 @@ any given meeting slot:
 ```{r, message = FALSE}
 # Search votes conducted on April 3, 2019 by the Establishment Subcommittee
 w <- search_division(target_date = "2019-04-03", committee_id = 2943)
-w
+w[, c(1:4, 24)]
 
-# Search all votes conducted by the 
-w <- search_division(committee_id = 2943)
+w <- search_division(slot_id = 176010)
 ```
 
 It is also possible to specify the committee or meeting by Committee ID
