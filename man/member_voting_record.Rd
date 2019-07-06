@@ -7,11 +7,11 @@
 \usage{
 member_voting_record(speaker_id = NULL, member_id = NULL,
   committee_id = NULL, slot_id = NULL, from = "1990-01-01T00:00:00",
-  to = Sys.time(), n = 50, verbose = TRUE)
+  to = Sys.time(), n = 10000, verbose = TRUE)
 
 legco_member_voting_record(speaker_id = NULL, member_id = NULL,
   committee_id = NULL, slot_id = NULL, from = "1990-01-01T00:00:00",
-  to = Sys.time(), n = 50, verbose = TRUE)
+  to = Sys.time(), n = 10000, verbose = TRUE)
 }
 \arguments{
 \item{speaker_id}{The Speaker ID, or a vector of IDs. If `NULL`, returns all
@@ -38,10 +38,10 @@ character values in `'YYYY-MM-DDTHH:MM:SS'` format, and objects of class
 `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
 to a time with `as.POSIXlt()`. Defaults to system time.}
 
-\item{n}{The number of entry to fetch. Defaults to `50`.}
+\item{n}{The number of entry to fetch. Defaults to `10000`.}
 
 \item{verbose}{Defaults to `TRUE`.}
 }
 \description{
-Fetch voting records of specific LegCo member(s).
+Fetch voting records of LegCo member(s).
 }
