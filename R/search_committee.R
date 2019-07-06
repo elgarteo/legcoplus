@@ -34,24 +34,21 @@ search_committee <- function(search_term, term_id = NULL, verbose = TRUE) {
     }
   }
   
-  if (length(index) > 0) {
-    df <- df[index, ]
-    if (!is.null(term_id)) {
-      df <- df[df$TermID %in% term_id, ]
-    }
-    rownames(df) <- 1:nrow(df)
-  } else {
-    message("Error: Could not find any matching result for search term \"", search_term, "\".")
-    df <- NULL
+  if (length(index) == 0) {
+    stop("Could not find any matching result for search term \"", search_term, "\".")
   }
   
-  if (!is.null(df)) {
-    if (verbose) {
-      message(nrow(df), " record(s) match(es) your parameters.")
-    }
-    
-    df
+  df <- df[index, ]
+  if (!is.null(term_id)) {
+    df <- df[df$TermID %in% term_id, ]
   }
+  rownames(df) <- 1:nrow(df)
+  
+  if (verbose) {
+    message(nrow(df), " record(s) match(es) your parameters.")
+  }
+  
+  df
 }
 
 #' @rdname search_committee

@@ -46,58 +46,57 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL,
                                from = '1900-01-01', to = Sys.Date(), 
                                floor = FALSE, n = 50, verbose = TRUE) {
   if (is.null(speaker_id) & is.null(member_id) & is.null(rundown_id)) {
-    message("Error: Please specifiy at least one LegCo member or Rundown ID.")
-  } else {
-    limit <- set_limit()
-    
-    if (!is.null(member_id)) {
-      tmp <- all_members(member_id = member_id, verbose = verbose)
-      limit <- limit - 3
-      speaker_id <- c(speaker_id, tmp$SpeakerID)
+    stop("Please specifiy at least one LegCo member or Rundown ID.")
+  } 
+  limit <- set_limit()
+  
+  if (!is.null(member_id)) {
+    tmp <- all_members(member_id = member_id, verbose = verbose)
+    limit <- limit - 3
+    speaker_id <- c(speaker_id, tmp$SpeakerID)
+  }
+  
+  df <- legco::questions(speaker_id = speaker_id, rundown_id = rundown_id,
+                         type = type, lang = lang, from = from,
+                         to = to, floor = floor, n = n, verbose = verbose)
+  limit <-  limit - 1
+  
+  if (!is.null(df)) {
+    for (i in 1:nrow(df)) {
+      # Locate range of Rundown ID of question
+      hansard_id <- legco::rundown(df$RundownID[i], verbose = verbose)
+      limit <- check_limit(limit, verbose)
+      hansard_id <- hansard_id$HansardID
+      max_rundown_id <- legco::subjects(hansard_id = hansard_id, verbose = verbose)
+      limit <- check_limit(limit, verbose)
+      max_rundown_id <- max_rundown_id$RundownID[min(which(max_rundown_id$RundownID > df$RundownID[i]))] - 1
+      
+      # Fetch full text with Rundown IDs
+      full_txt <- legco::rundown((df$RundownID[i] + 1):max_rundown_id, verbose = verbose)
+      limit <- check_limit(limit, verbose)
+      full_txt <- full_txt[order(full_txt$RundownID), ]
+      
+      # Identify Speaker ID of answering public officer
+      answering_speaker_id <- unique(full_txt$SpeakerID[full_txt$SpeakerID %in% 6:32])
+      
+      # Categorise by Speaker ID
+      answer_txt <- full_txt$Content[full_txt$SpeakerID %in% 6:32]
+      # Remarks made by LegCo appointment holders (e.g. President)
+      misc_txt <- full_txt$Content[full_txt$SpeakerID %in% 1:5]
+      question_txt <- full_txt$Content[!full_txt$SpeakerID %in% 1:32]
+      
+      df$AskingSpeakerID <- list(unique(full_txt$SpeakerID[!full_txt$SpeakerID %in% 1:32]))
+      df$AnsweringSpeakerID <- list(answering_speaker_id)
+      df$Question[i] <- list(question_txt)
+      df$Answer[i] <- list(answer_txt)
+      df$Misc[i] <- list(misc_txt)
     }
     
-    df <- legco::questions(speaker_id = speaker_id, rundown_id = rundown_id,
-                           type = type, lang = lang, from = from,
-                           to = to, floor = floor, n = n, verbose = verbose)
-    limit <-  limit - 1
-    
-    if (!is.null(df)) {
-      for (i in 1:nrow(df)) {
-        # Locate range of Rundown ID of question
-        hansard_id <- legco::rundown(df$RundownID[i], verbose = verbose)
-        limit <- check_limit(limit, verbose)
-        hansard_id <- hansard_id$HansardID
-        max_rundown_id <- legco::subjects(hansard_id = hansard_id, verbose = verbose)
-        limit <- check_limit(limit, verbose)
-        max_rundown_id <- max_rundown_id$RundownID[min(which(max_rundown_id$RundownID > df$RundownID[i]))] - 1
-
-        # Fetch full text with Rundown IDs
-        full_txt <- legco::rundown((df$RundownID[i] + 1):max_rundown_id, verbose = verbose)
-        limit <- check_limit(limit, verbose)
-        full_txt <- full_txt[order(full_txt$RundownID), ]
-        
-        # Identify Speaker ID of answering public officer
-        answering_speaker_id <- unique(full_txt$SpeakerID[full_txt$SpeakerID %in% 6:32])
-        
-        # Categorise by Speaker ID
-        answer_txt <- full_txt$Content[full_txt$SpeakerID %in% 6:32]
-        # Remarks made by LegCo appointment holders (e.g. President)
-        misc_txt <- full_txt$Content[full_txt$SpeakerID %in% 1:5]
-        question_txt <- full_txt$Content[!full_txt$SpeakerID %in% 1:32]
-        
-        df$AskingSpeakerID <- list(unique(full_txt$SpeakerID[!full_txt$SpeakerID %in% 1:32]))
-        df$AnsweringSpeakerID <- list(answering_speaker_id)
-        df$Question[i] <- list(question_txt)
-        df$Answer[i] <- list(answer_txt)
-        df$Misc[i] <- list(misc_txt)
-      }
-      
-      if (verbose) {
-        message(nrow(df), " record(s) match(es) your parameters.")
-      }
-      
-      df
+    if (verbose) {
+      message(nrow(df), " record(s) match(es) your parameters.")
     }
+    
+    df
   }
 }
 
