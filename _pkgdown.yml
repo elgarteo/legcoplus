@@ -1,11 +1,18 @@
+template:
+  params:
+    bootswatch: yeti
+
 authors:
   Elgar Teo:
     href: https://elgarteo.ga
 
 navbar:
+  type: inverse
   left:
     - icon: fa-home fa-lg
       href: ./
+    - text: "Introduction"
+      href: articles/introduction.html
     - text: "Reference"
       href: reference/index.html
     - text: "Base: legco"
