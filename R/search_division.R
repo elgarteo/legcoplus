@@ -28,6 +28,9 @@ search_division <- function(target_date = NULL, committee_id = NULL, slot_id = N
       target_date <- as.Date(target_date)
       from <- paste0(target_date, "T00:00:00")
       to <- paste0(target_date, "T23:59:59")
+    } else {
+      from <- "1900-01-01"
+      to <- Sys.Date()
     }
     
     if (!is.null(slot_id)) {
