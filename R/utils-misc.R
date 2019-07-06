@@ -12,6 +12,8 @@ check_limit <- function (n, verbose) {
     }
     Sys.sleep(60)
     n <- set_limit()
+  } else {
+    Sys.sleep(2)
   }
   n
 }
