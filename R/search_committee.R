@@ -7,19 +7,22 @@
 #'
 #' @param term_id The id of a term, or a vector of ids. If `NULL`, searches
 #'   committees from all terms. Defaults to `NULL`.
+#'   
+#' @param exact Whether to look for exact match only. If `TRUE`, return only
+#'   exact matches. Defaults to `FALSE`.
 #'
 #' @param verbose Defaults to `TRUE`.
 #'
 #' @export
 #' 
-search_committee <- function(search_term, term_id = NULL, verbose = TRUE) {
+search_committee <- function(search_term, term_id = NULL, exact = FALSE, verbose = TRUE) {
   df <- legco::committee(verbose = verbose)
   
-  if (length(grep("[^\001-\177]", search_term)) == 1) { # Detect language of input
+  if (grepl("[^\001-\177]", search_term)) { # Detect language of input
     # If Chinese
     index <- which(df$NameChi %in% search_term)
     
-    if (!length(index)) {
+    if (!exact) {
       index <- search_columns(search_term, "", df$NameChi)
     }
   } else {
@@ -29,12 +32,12 @@ search_committee <- function(search_term, term_id = NULL, verbose = TRUE) {
     
     index <- which(df$NameEng %in% term_tmp)
     
-    if (!length(index)) {
+    if (!exact) {
       index <- search_columns(term_tmp, " ", name_tmp)
     }
   }
   
-  if (length(index) == 0) {
+  if (!length(index)) {
     stop("Could not find any matching result for search term \"", search_term, "\".")
   }
   

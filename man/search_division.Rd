@@ -5,14 +5,14 @@
 \alias{legco_search_division}
 \title{Search Division}
 \usage{
-search_division(target_date = NULL, committee_id = NULL,
+search_division(search_date = NULL, committee_id = NULL,
   slot_id = NULL, verbose = TRUE)
 
-legco_search_division(target_date = NULL, committee_id = NULL,
+legco_search_division(search_date = NULL, committee_id = NULL,
   slot_id = NULL, verbose = TRUE)
 }
 \arguments{
-\item{target_date}{The date and time when the division(s) was/were conducted.
+\item{search_date}{The date and time when the division(s) was/were conducted.
 Accepts character values in `'YYYY-MM-DD'` format, and objects of class
 `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
 to a date with `as.Date()`.}

@@ -5,7 +5,7 @@
 #' Council, House Committee, Finance Committee and its subcomittees are
 #' available.
 #'
-#' @param target_date The date and time when the division(s) was/were conducted.
+#' @param search_date The date and time when the division(s) was/were conducted.
 #'   Accepts character values in `'YYYY-MM-DD'` format, and objects of class
 #'   `Date`, `POSIXt`, `POSIXct`, `POSIXlt` or anything else that can be coerced
 #'   to a date with `as.Date()`.
@@ -19,16 +19,16 @@
 #'
 #' @export
 #' 
-search_division <- function(target_date = NULL, committee_id = NULL, slot_id = NULL, 
+search_division <- function(search_date = NULL, committee_id = NULL, slot_id = NULL, 
                           verbose = TRUE) {
-  if (is.null(target_date) & is.null(committee_id) & is.null(slot_id)) {
+  if (is.null(search_date) & is.null(committee_id) & is.null(slot_id)) {
     stop("Please specifiy the date, a committee or a meeting slot.")
   }
   
-  if (!is.null(target_date)) {
-    target_date <- as.Date(target_date)
-    from <- paste0(target_date, "T00:00:00")
-    to <- paste0(target_date, "T23:59:59")
+  if (!is.null(search_date)) {
+    search_date <- as.Date(search_date)
+    from <- paste0(search_date, "T00:00:00")
+    to <- paste0(search_date, "T23:59:59")
   } else {
     from <- "1900-01-01"
     to <- Sys.Date()
@@ -36,13 +36,12 @@ search_division <- function(target_date = NULL, committee_id = NULL, slot_id = N
   
   if (!is.null(slot_id)) {
     if (length(slot_id) > 1) {
-      message("Error: Please enter only one Slot ID.")
-    } else {
-      tmp <- legco::meeting_committee(slot_id, verbose = verbose)
-      from <- as.Date(tmp$StartDateTime)
-      to <- as.Date(tmp$StartDateTime)
-      committee_id <- tmp$CommitteeID
+      stop("Please enter only one Slot ID.")
     }
+    tmp <- legco::meeting_committee(slot_id, verbose = verbose)
+    from <- as.Date(tmp$StartDateTime)
+    to <- as.Date(tmp$StartDateTime)
+    committee_id <- tmp$CommitteeID
   }
   
   if (!is.null(committee_id)) {
