@@ -56,7 +56,6 @@ member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_
     if (length(slot_id) > 1) {
       stop("Please enter only one Slot ID.")
     }
-    
     tmp <- legco::meeting_committee(slot_id, verbose = verbose)
     from <- as.Date(tmp$StartDateTime)
     to <- as.Date(tmp$StartDateTime)
@@ -78,6 +77,7 @@ member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_
   if (!is.null(df)) {
     df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh", "OverallResult",
                "NameCh", "NameEn", "Vote")]
+    
     if (verbose) {
       message(nrow(df), " record(s) match(es) your parameters.")
     }
