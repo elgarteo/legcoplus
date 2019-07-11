@@ -91,8 +91,8 @@ w <- answered_questions(rundown_id = 294209)
 ```
 
 Note that if `verbose` is enabled (which is by default), multiple messages will be shown. 
-These are the messages created when the function is making multiple requests to the APIs.
-The actual number of records in the output data frame is displayed in the last message.
+They are created when the function is making multiple requests to the APIs.
+The actual number of records in the final output data frame is displayed in the last message.
 For instance, it is 1 in the example above.
 
 `answered_questions()` returns the asking members of the main question and the supplementary 
@@ -162,7 +162,38 @@ w <- search_committee(search_term = "bills committee", term_id = 5)
 head(w[, 1:4])
 ```
 
-By default, 
+By default, `search_committee()` returns results with the exact match of the search term. It is 
+possible to disable exact matching so that the function returns results containing any of
+the English words/Chinese characters in the search term:
+
+```{r }
+# Search all committees with either "taxi" or "ferry" in the name
+w <- search_committee(search_term = "taxi ferry", exact = FALSE)
+w[, 1:4]
+
+# Search all committees with either "動" or "植" in the name
+w <- search_committee(search_term = "動植", exact = FALSE)
+head(w[, 1:4])
+```
+
+`search_committee()` returns results containing the search term, including non-exact words.
+For instance, records containing the term `"taxi"` are included in the search result of 
+the search term `"tax"`:
+
+```{r }
+# Search result of "tax"
+w <- search_committee(search_term = "tax")
+w$NameEng
+```
+
+To have only exact words in the result, insert a space before and/or 
+after the word, e.g. `" tax "`:
+
+```{r }
+# Search result of " tax "
+w <- search_committee(search_term = " tax ")
+w$NameEng
+```
 
 ## search_division() {#search_division}
 
@@ -173,7 +204,7 @@ any given meeting slot:
 
 ```{r }
 # Search votes conducted on April 3, 2019 by the Establishment Subcommittee
-w <- search_division(target_date = "2019-04-03", committee_id = 2943)
+w <- search_division(search_date = "2019-04-03", committee_id = 2943)
 w[, c(1:4, 24)]
 
 # Search vote conducted during a specific meeting
@@ -205,11 +236,12 @@ w$SpeakerID
 
 ```{r }
 # Lookup members with "謙" in their names
-search_member(name = "謙")
+search_member(search_term = "謙")
 
 # Lookup members with "ting" in their names
-search_member(name = "ting")
+search_member(search_term = "ting")
 ```
 
-By default, `search_member()` returns the closest 
+The searching parameters of `search_member()` are the same with that of `search_committee()` 
+such as the exact match option. Refer [here](#search_committee) for detailed examples.
 
