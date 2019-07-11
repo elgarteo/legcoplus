@@ -7,15 +7,15 @@
 #'
 #' @param term_id The id of a term, or a vector of ids. If `NULL`, searches
 #'   committees from all terms. Defaults to `NULL`.
-#'   
-#' @param exact Whether to look for exact match only. If `TRUE`, return only
-#'   exact matches. Defaults to `FALSE`.
+#'
+#' @param exact Whether to look for exact match of the search term. Defaults to
+#'   `TRUE`. Defaults to `TRUE`.
 #'
 #' @param verbose Defaults to `TRUE`.
 #'
 #' @export
 #' 
-search_committee <- function(search_term, term_id = NULL, exact = FALSE, verbose = TRUE) {
+search_committee <- function(search_term, term_id = NULL, exact = TRUE, verbose = TRUE) {
   df <- legco::committee(verbose = verbose)
   
   if (grepl("[^\001-\177]", search_term)) { # Detect language of input
@@ -30,7 +30,7 @@ search_committee <- function(search_term, term_id = NULL, exact = FALSE, verbose
     name_tmp <- tolower(gsub("^ | $", "", df$NameEng))
     term_tmp <- tolower(gsub("^ | $", "", search_term))
     
-    index <- which(df$NameEng %in% term_tmp)
+    index <- which(df$NameEng %in% term_tmp) # Look for exact match 
     
     if (!exact) {
       index <- search_columns(term_tmp, " ", name_tmp)

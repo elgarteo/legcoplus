@@ -4,11 +4,10 @@
 #' Chinese name.
 #'
 #' @param search_term Search string of member's name. Accepts Chinese or English
-#'   full or partial name. If no full match found, return closest match.
-#'   Defaults to `NULL`.
+#'   full or partial name. Defaults to `NULL`.
 #'
-#' @param exact Whether to look for exact match only. If `TRUE`, return only
-#'   exact matches. Defaults to `FALSE`.
+#' @param exact Whether to look for exact match of the search term. Defaults to
+#'   `TRUE`.
 #'
 #' @param speaker_id The Speaker ID, or a vector of IDs, as specified in the
 #'   output from the function `legco::speakers()`. Defaults to `NULL`.
@@ -21,7 +20,7 @@
 #' @export
 #' 
 search_member <- function(search_term = NULL, speaker_id = NULL, member_id = NULL, 
-                          exact = FALSE, verbose = TRUE) {
+                          exact = TRUE, verbose = TRUE) {
   df_speaker <- legco::speakers(verbose = verbose)
   df_member <- legco::member(verbose = verbose)
   df_term <- legco::member_term(verbose = verbose)
@@ -64,46 +63,39 @@ search_member <- function(search_term = NULL, speaker_id = NULL, member_id = NUL
   if (!is.null(search_term)) {
     if (grepl("[^\001-\177]", search_term)) { # Detect language of input
       # If Chinese
-      index <- which(df$NameChi %in% search_term)
-      index <- c(index, which(df$SurnameChi %in% search_term))
-      index <- c(index, which(df$FirstnameChi %in% search_term))
-      
       if (!exact) {
-        index <- search_columns(search_term, "",
-                                df$NameChi,
-                                df$SurnameChi,
-                                df$FirstnameChi)
+        search_term <- unlist(strsplit(search_term, ""))
       }
+      
+      index <- sapply(search_term, function(x) grep(x, df$NameChi))
+      index <- c(index, sapply(search_term, function(x) grep(x, df$SurnameChi)))
+      index <- c(index, sapply(search_term, function(x) grep(x, df$FirstnameChi)))
+      
     } else {
       # If English
-      name_tmp <- tolower(gsub("-", " ", search_term))
-      fullname_tmp <- tolower(gsub("-", " ", df$NameEng))
-      fullname_tmp <- gsub("^ | $", "", fullname_tmp) # Remove unnecessary space
+      name_tmp <- tolower(search_term)
+      fullname_tmp <- tolower(df$NameEng)
       surname_tmp <- tolower(df$SurnameEng)
-      surname_tmp <- gsub("^ | $", "", surname_tmp)
-      firstname_tmp <- tolower(gsub("-", " ", df$FirstnameEng))
-      firstname_tmp <- gsub("^ | $", "", firstname_tmp)
+      firstname_tmp <- tolower(df$FirstnameEng)
+      firstname_tmp <- gsub("-", " ", firstname_tmp)
       engname_tmp <- tolower(df$EnglishName)
-      engname_tmp <- gsub("^ | $", "", engname_tmp)
-      
-      index <- which(fullname_tmp %in% name_tmp)
-      index <- c(index, which(surname_tmp %in% name_tmp))
-      index <- c(index, which(firstname_tmp %in% name_tmp))
-      index <- c(index, which(engname_tmp %in% name_tmp))
       
       if (!exact) {
-        index <- search_columns(name_tmp, " ",
-                                fullname_tmp,
-                                surname_tmp,
-                                firstname_tmp,
-                                engname_tmp)
+        search_term <- unlist(strsplit(search_term, " "))
       }
+      
+      index <- sapply(search_term, function(x) grep(x, fullname_tmp))
+      index <- c(index, sapply(search_term, function(x) grep(x, surname_tmp)))
+      index <- c(index, sapply(search_term, function(x) grep(x, firstname_tmp)))
+      index <- c(index, sapply(search_term, function(x) grep(x, engname_tmp)))
     }
+    
+    index <- unique(unlist(index))
     
     if (!length(index)) {
       stop("Could not find any matching result for search term \"", search_term, "\".")
     }
-    
+    #print(index)
     df <- df[index, ]
     rownames(df) <- 1:nrow(df)
   }

@@ -5,10 +5,10 @@
 \alias{legco_search_committee}
 \title{Search Committee}
 \usage{
-search_committee(search_term, term_id = NULL, exact = FALSE,
+search_committee(search_term, term_id = NULL, exact = TRUE,
   verbose = TRUE)
 
-legco_search_committee(search_term, term_id = NULL, exact = FALSE,
+legco_search_committee(search_term, term_id = NULL, exact = TRUE,
   verbose = TRUE)
 }
 \arguments{
@@ -18,8 +18,8 @@ name of a committee.}
 \item{term_id}{The id of a term, or a vector of ids. If `NULL`, searches
 committees from all terms. Defaults to `NULL`.}
 
-\item{exact}{Whether to look for exact match only. If `TRUE`, return only
-exact matches. Defaults to `FALSE`.}
+\item{exact}{Whether to look for exact match of the search term. Defaults to
+`TRUE`. Defaults to `TRUE`.}
 
 \item{verbose}{Defaults to `TRUE`.}
 }
