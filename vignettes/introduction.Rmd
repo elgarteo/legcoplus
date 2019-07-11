@@ -7,6 +7,9 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```{r, echo = FALSE}
+knitr::opts_chunk$set(message = FALSE)
+```
 
 `legcoplus` is an R package to reorganise and present data from the Hong Kong Legislative Council (LegCo)
 APIs in a more useable manner. It provides functions that restructure data from multiple API requests to 
@@ -59,74 +62,54 @@ library(legcoplus)
 
 The package contains the following functions:
 
-* [`all_members()`](#all_members) searches everyone who speaks in LegCo with unique identifiers
-from different LegCo APIs' databases or full or partial name.
 * [`answered_questions()`](#answered_questions) fetches more detailed information and the full
 text of questions put on the government by any given LegCo member.
 * [`search_committee()`](#search_committee) searches committee by full or partial name of committee.
 * [`search_division()`](#search_division) searches all division(s) (or votes) held in LegCo Council, 
 House Committee, Finance Committe and its subcommittees meetings on any given date, by any given committee/subcommittee or during any given meeting slot.
+* [`search_member()`](#search_member) searches everyone who speaks in LegCo with unique identifiers
+from different LegCo APIs' databases or full or partial name.
 * [`member_voting_record()`](#member_voting_record) returns the voting record in LegCo Council 
 and committee meetings.
 
 All functions can also be accessed with the prefix `legco_`, e.g. `legco_all_members()` and `all_members()`
 return the same result.
 
-## all_members() {#all_members}
-
-The unique identifiers of different LegCo databases are not interchangeable, for instance
-`SpeakerID` used in the Hansard Database and `MemberID` used in the Schedule Database. `all_members()` 
-provides an easy way to work with `SpeakerID` and `MemberID` interchangeably:
-
-```{r }
-# A combined list of all members from legco::speakers() and legco::member()
-w <- all_members()
-w[63:64, ]
-```
-
-Note that if `verbose` is enabled (by default), multiple messages will be shown. The actual
-number of records retrieved is only displayed in the last message. In the example above, it is 161.
-
-```{r, message = FALSE}
-# Lookup the MemberID of SpeakerID 63
-w <- all_members(speaker_id = 63)
-w$MemberID
-
-# Lookup the SpeakerID of MemberID 273
-w <- all_members(member_id = 273)
-w$SpeakerID
-```
-
-`all_members()` also allows searching by full or partial name in English or Chinese:
-
-```{r, message = FALSE}
-# Lookup members with "謙" in their names
-all_members(name = "謙")
-
-# Lookup members with "ting" in their names
-all_members(name = "ting")
-
-```
-
 ## answered_questions() {#answered_questions}
 
 The function `legco::questions()` returns only the subject of the question put on the government 
 but not the full text and the answering body:
 
-```{r, message = FALSE}
+```{r }
 legco::questions(rundown_id = 294209)
 ```
 
 While the function `answered_questions()` fetches the question text and other detailed information as well:
 
-```{r, message = FALSE}
+```{r }
 w <- answered_questions(rundown_id = 294209)
+```
+
+Note that if `verbose` is enabled (which is by default), multiple messages will be shown. 
+These are the messages created when the function is making multiple requests to the APIs.
+The actual number of records in the output data frame is displayed in the last message.
+For instance, it is 1 in the example above.
+
+`answered_questions()` returns the asking members of the main question and the supplementary 
+questions (if any):
+
+```{r }
 # All asking members (including supplementary questions)
 legco::speakers(w$AskingSpeakerID)
 
 # The answering official of the question
 legco::speakers(w$AnsweringSpeakerID)
+```
 
+The full text of the main question, supplementary questions (if any), answers and miscellaneous 
+conversations (e.g. some member rising to a point of order) are contained in lists:
+
+```{r }
 # Excerpts of the question text
 w$Question[[1]][11]
 
@@ -140,42 +123,13 @@ w$Misc[[1]][10]
 It is also possible to fetch all questions raised by any given member and filter by parameters
 that are supported by `legco::questions()`.
 
-```{r, message = FALSE}
+```{r }
 # Search all written questions asked by SpeakerID 61 and MemberID 209
 # from January to April 2019 in Chinese
 w <- answered_questions(speaker_id = 61, member_id = 209,
                         from = "2019-01-01", to ="2019-04-30",
                         type = "written", lang = "zh")
 w[, 1:5]
-```
-
-## search_committee() {#search_committee}
-
-The function `search_committee` allows searching committee with full or partial name of the committee:
-
-```{r, message = FALSE}
-# Search all Bills Committees established in the fixth term of LegCo
-w <- search_committee(search_term = "Bills Committee", term_id = 5)
-head(w[, 1:4])
-
-# Search 
-```
-
-## search_division() {#search_division}
-
-The LegCo Voting Result Database does not provide a full list of votes that have taken place 
-in Council and committee meetings. With the function `search_division()`, it is possible to 
-search the list of division(s) conducted on any given date, by any given committee or during
-any given meeting slot:
-
-```{r, message = FALSE}
-# Search votes conducted on April 3, 2019 by the Establishment Subcommittee
-w <- search_division(target_date = "2019-04-03", committee_id = 2943)
-w[, c(1:4, 24)]
-
-# Search vote conducted during a specific meeting
-w <- search_division(slot_id = 179602)
-w[, c(1:4, 24)]
 ```
 
 ## member_voting_record() {#member_voting_record}
@@ -186,7 +140,7 @@ parameters of any unique identifier from other databases such as `SpeakerID`, `M
 full English name of the committee. With the function `member_voting_record()`, it is possible
 to apply these idenitifers to search the voting results.
 
-```{r, message = FALSE}
+```{r }
 # Search the voting records of SpeakerID 102 and MemberID 910
 # in CommitteeID 2567 since June 15, 2019.
 w <- member_voting_record(speaker_id = 102, member_id = 910,
@@ -197,3 +151,65 @@ head(w)
 w <- member_voting_record(slot_id = 177529)
 head(w)
 ```
+
+## search_committee() {#search_committee}
+
+The function `search_committee()` allows searching committee with full or partial name of the committee:
+
+```{r }
+# Search all Bills Committees established in the fixth term of LegCo
+w <- search_committee(search_term = "bills committee", term_id = 5)
+head(w[, 1:4])
+```
+
+By default, 
+
+## search_division() {#search_division}
+
+The LegCo Voting Result Database does not provide a full list of votes that have taken place 
+in Council and committee meetings. With the function `search_division()`, it is possible to 
+search the list of division(s) conducted on any given date, by any given committee or during
+any given meeting slot:
+
+```{r }
+# Search votes conducted on April 3, 2019 by the Establishment Subcommittee
+w <- search_division(target_date = "2019-04-03", committee_id = 2943)
+w[, c(1:4, 24)]
+
+# Search vote conducted during a specific meeting
+w <- search_division(slot_id = 179602)
+w[, c(1:4, 24)]
+```
+
+## search_member() {#search_member}
+
+The unique identifiers of different LegCo databases are not interchangeable, for instance
+`SpeakerID` used in the Hansard Database and `MemberID` used in the Schedule Database. `search_member()` 
+provides an easy way to work with `SpeakerID` and `MemberID` interchangeably:
+
+```{r }
+# A combined list of all members from legco::speakers() and legco::member()
+w <- search_member()
+w[63:64, ]
+
+# Lookup the MemberID of SpeakerID 63
+w <- search_member(speaker_id = 63)
+w$MemberID
+
+# Lookup the SpeakerID of MemberID 273
+w <- search_member(member_id = 273)
+w$SpeakerID
+```
+
+`search_member()` also allows searching by full or partial name in English or Chinese:
+
+```{r }
+# Lookup members with "謙" in their names
+search_member(name = "謙")
+
+# Lookup members with "ting" in their names
+search_member(name = "ting")
+```
+
+By default, `search_member()` returns the closest 
+
