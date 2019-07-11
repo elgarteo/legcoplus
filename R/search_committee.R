@@ -20,22 +20,23 @@ search_committee <- function(search_term, term_id = NULL, exact = TRUE, verbose 
   
   if (grepl("[^\001-\177]", search_term)) { # Detect language of input
     # If Chinese
-    index <- which(df$NameChi %in% search_term)
-    
     if (!exact) {
-      index <- search_columns(search_term, "", df$NameChi)
+      search_term <- unlist(strsplit(search_term, ""))
     }
+    
+    index <- sapply(search_term, function(x) grep(x, df$NameChi))
   } else {
     # If English
-    name_tmp <- tolower(gsub("^ | $", "", df$NameEng))
-    term_tmp <- tolower(gsub("^ | $", "", search_term))
-    
-    index <- which(df$NameEng %in% term_tmp) # Look for exact match 
+    term_tmp <- tolower(search_term)
     
     if (!exact) {
-      index <- search_columns(term_tmp, " ", name_tmp)
+      term_tmp <- unlist(strsplit(term_tmp, " "))
     }
+    
+    index <- sapply(term_tmp, function(x) grep(x, df$NameEng, ignore.case = TRUE))
   }
+  
+  index <- unique(unlist(index))
   
   if (!length(index)) {
     stop("Could not find any matching result for search term \"", search_term, "\".")
