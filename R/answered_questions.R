@@ -51,7 +51,7 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL,
   limit <- set_limit()
   
   if (!is.null(member_id)) {
-    tmp <- all_members(member_id = member_id, verbose = verbose)
+    tmp <- search_member(member_id = member_id, verbose = verbose)
     limit <- limit - 3
     speaker_id <- c(speaker_id, tmp$SpeakerID)
   }
