@@ -64,16 +64,24 @@ The package contains the following functions:
 
 * [`answered_questions()`](#answered_questions) fetches more detailed information and the full
 text of questions put on the government by any given LegCo member.
-* [`search_committee()`](#search_committee) searches committee by full or partial name of committee.
-* [`search_division()`](#search_division) searches all division(s) (or votes) held in LegCo Council, 
-House Committee, Finance Committe and its subcommittees meetings on any given date, by any given committee/subcommittee or during any given meeting slot.
-* [`search_member()`](#search_member) searches everyone who speaks in LegCo with unique identifiers
-from different LegCo APIs' databases or full or partial name.
 * [`member_voting_record()`](#member_voting_record) returns the voting record in LegCo Council 
 and committee meetings.
+* [`search_committee()`](#search_committee) searches committee by full or partial name of committee.
+* [`search_division()`](#search_division) searches all division(s) (or votes) held in LegCo Council, 
+House Committee, Finance Committe and its subcommittees meetings on any given date, by any given
+committee/subcommittee or during any given meeting slot.
+* [`search_member()`](#search_member) searches everyone who speaks in LegCo with unique identifiers
+from different LegCo APIs' databases or full or partial name.
 
 All functions can also be accessed with the prefix `legco_`, e.g. `legco_all_members()` and `all_members()`
 return the same result.
+
+### API Limits
+
+LegCo APIs have an access limit of appraximately 60 requests per minute per IP. As some of the functions 
+in this package (such as `ansered_questions()`) make multiple requests, the limit can be reached very 
+easily. These functions have a timer to pause API requests for 60 seconds when the limit is reached 
+within a single function call. It is also advised to retrieve the data in smaller packets.
 
 ## answered_questions() {#answered_questions}
 
@@ -242,6 +250,7 @@ search_member(search_term = "謙")
 search_member(search_term = "ting")
 ```
 
-The searching parameters of `search_member()` are the same with that of `search_committee()` 
-such as the exact match option. Refer [here](#search_committee) for detailed examples.
+The searching parameter of `search_member()` has the same options with that of `search_committee()` 
+such as the exact search option. Refer [here](#search_committee) for detailed examples on how 
+to apply these options in your search.
 
