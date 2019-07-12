@@ -73,7 +73,7 @@
     <div class="page-header toc-ignore">
       <h1>Introduction to legcoplus</h1>
             
-            <h4 class="date">2019-07-06</h4>
+            <h4 class="date">2019-07-12</h4>
       
       
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -95,7 +95,7 @@
 <div id="from-web" class="section level3">
 <h3 class="hasAnchor">
 <a href="#from-web" class="anchor"></a>From web</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"https://elgarteo.ga/legco/legco_0.0.9999.tar.gz"</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"https://elgarteo.ga/legco/legco_0.0.9999.tar.gz"</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</code></pre></div>
 </div>
 </div>
 <div id="installing-legcoplus" class="section level2">
@@ -109,12 +109,12 @@
 <div id="from-web-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#from-web-1" class="anchor"></a>From web</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz"</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz"</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</code></pre></div>
 </div>
 <div id="load-legcoplus" class="section level3">
 <h3 class="hasAnchor">
 <a href="#load-legcoplus" class="anchor"></a>Load legcoplus</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(legcoplus)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(legcoplus)</code></pre></div>
 </div>
 </div>
 <div id="list-of-functions" class="section level2">
@@ -123,79 +123,28 @@
 <p>The package contains the following functions:</p>
 <ul>
 <li>
-<a href="#all_members"><code><a href="../reference/all_members.html">all_members()</a></code></a> searches everyone who speaks in LegCo with unique identifiers from different LegCo APIs’ databases or full or partial name.</li>
+<code><a href="../reference/answered_questions.html">answered_questions()</a></code> fetches more detailed information and the full text of questions put on the government by any given LegCo member.</li>
 <li>
-<a href="#answered_questions"><code><a href="../reference/answered_questions.html">answered_questions()</a></code></a> fetches more detailed information and the full text of questions put on the government by any given LegCo member.</li>
+<code><a href="../reference/member_voting_record.html">member_voting_record()</a></code> returns the voting record in LegCo Council and committee meetings.</li>
 <li>
-<a href="#search_committee"><code><a href="../reference/search_committee.html">search_committee()</a></code></a> searches committee by full or partial name of committee.</li>
+<code><a href="../reference/search_committee.html">search_committee()</a></code> searches committee by full or partial name of committee.</li>
 <li>
-<a href="#search_division"><code><a href="../reference/search_division.html">search_division()</a></code></a> searches all division(s) (or votes) held in LegCo Council, House Committee, Finance Committe and its subcommittees meetings on any given date, by any given committee/subcommittee or during any given meeting slot.</li>
+<code><a href="../reference/search_division.html">search_division()</a></code> searches all division(s) (or votes) held in LegCo Council, House Committee, Finance Committe and its subcommittees meetings on any given date, by any given committee/subcommittee or during any given meeting slot.</li>
 <li>
-<a href="#member_voting_record"><code><a href="../reference/member_voting_record.html">member_voting_record()</a></code></a> returns the voting record in LegCo Council and committee meetings.</li>
+<code><a href="../reference/search_member.html">search_member()</a></code> searches everyone who speaks in LegCo with unique identifiers from different LegCo APIs’ databases or full or partial name.</li>
 </ul>
-<p>All functions can also be accessed with the prefix <code>legco_</code>, e.g. <code><a href="../reference/all_members.html">legco_all_members()</a></code> and <code><a href="../reference/all_members.html">all_members()</a></code> return the same result.</p>
+<p>All functions can also be accessed with the prefix <code>legco_</code>, e.g. <code>legco_all_members()</code> and <code>all_members()</code> return the same result.</p>
+<div id="api-limits" class="section level3">
+<h3 class="hasAnchor">
+<a href="#api-limits" class="anchor"></a>API Limits</h3>
+<p>LegCo APIs have an access limit of appraximately 60 requests per minute per IP. As some of the functions in this package (such as <code>ansered_questions()</code>) make multiple requests, the limit can be reached very easily. These functions have a timer to pause API requests for 60 seconds when the limit is reached within a single function call. It is also advised to retrieve the data in smaller packets.</p>
 </div>
-<div id="all_members" class="section level2">
-<h2 class="hasAnchor">
-<a href="#all_members" class="anchor"></a>all_members()</h2>
-<p>The unique identifiers of different LegCo databases are not interchangeable, for instance <code>SpeakerID</code> used in the Hansard Database and <code>MemberID</code> used in the Schedule Database. <code><a href="../reference/all_members.html">all_members()</a></code> provides an easy way to work with <code>SpeakerID</code> and <code>MemberID</code> interchangeably:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># A combined list of all members from legco::speakers() and legco::member()</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/all_members.html">all_members</a></span>()</span></code></pre></div>
-<pre><code>## Retrieving records...</code></pre>
-<pre><code>## Retrieved 161 record(s). 161 record(s) available in total.</code></pre>
-<pre><code>## Retrieving records...</code></pre>
-<pre><code>## Retrieved 96 record(s). 96 record(s) available in total.</code></pre>
-<pre><code>## Retrieving records...</code></pre>
-<pre><code>## Retrieved 140 record(s). 140 record(s) available in total.</code></pre>
-<pre><code>## 161 record(s) match(es) your parameters.</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>w[<span class="dv">63</span><span class="op">:</span><span class="dv">64</span>, ]</span></code></pre></div>
-<pre><code>##    SpeakerID MemberID Type NameChi      NameEng TermID TitleEng SurnameEng
-## 63       161      929   MB  陳凱欣 CHAN HOI-YAN      5                CHAN
-## 64       144      912   MB  容海恩 YUNG HOI-YAN      5                YUNG
-##    FirstnameEng EnglishName HonourableEng SurnameChi FirstnameChi TitleChi
-## 63      Hoi-yan                                   陳         凱欣     議員
-## 64      Hoi-yan                        JP         容         海恩     議員
-##    HonourableChi
-## 63              
-## 64            JP</code></pre>
-<p>Note that if <code>verbose</code> is enabled (by default), multiple messages will be shown. The actual number of records retrieved is only displayed in the last message. In the example above, it is 161.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Lookup the MemberID of SpeakerID 63</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/all_members.html">all_members</a></span>(<span class="dt">speaker_id =</span> <span class="dv">63</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>w<span class="op">$</span>MemberID</span></code></pre></div>
-<pre><code>## [1] 260</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Lookup the SpeakerID of MemberID 273</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/all_members.html">all_members</a></span>(<span class="dt">member_id =</span> <span class="dv">273</span>)</span>
-<span id="cb16-3"><a href="#cb16-3"></a>w<span class="op">$</span>SpeakerID</span></code></pre></div>
-<pre><code>## [1] 75</code></pre>
-<p><code><a href="../reference/all_members.html">all_members()</a></code> also allows searching by full or partial name in English or Chinese:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Lookup members with "謙" in their names</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="kw"><a href="../reference/all_members.html">all_members</a></span>(<span class="dt">name =</span> <span class="st">"謙"</span>)</span></code></pre></div>
-<pre><code>##   SpeakerID MemberID Type NameChi      NameEng TermID TitleEng SurnameEng
-## 1        82      101   MB  葉國謙  IP KWOK-HIM      4      Hon         IP
-## 2        53      187   MB  石禮謙 ABRAHAM SHEK   4, 5      Hon       SHEK
-##   FirstnameEng EnglishName HonourableEng SurnameChi FirstnameChi TitleChi
-## 1     Kwok-him                   GBS, JP         葉         國謙     議員
-## 2      Lai-him     Abraham       GBS, JP         石         禮謙     議員
-##   HonourableChi
-## 1       GBS, JP
-## 2       GBS, JP</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Lookup members with "ting" in their names</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="kw"><a href="../reference/all_members.html">all_members</a></span>(<span class="dt">name =</span> <span class="st">"ting"</span>)</span></code></pre></div>
-<pre><code>##   SpeakerID MemberID Type NameChi         NameEng TermID TitleEng
-## 1       138      911   MB  林卓廷  LAM CHEUK-TING      5         
-## 2        65      267   MB  黃定光 WONG TING-KWONG   4, 5      Hon
-##   SurnameEng FirstnameEng EnglishName HonourableEng SurnameChi
-## 1        LAM   Cheuk-ting                                   林
-## 2       WONG   Ting-kwong                   GBS, JP         黃
-##   FirstnameChi TitleChi HonourableChi
-## 1         卓廷     議員              
-## 2         定光     議員       GBS, JP</code></pre>
 </div>
 <div id="answered_questions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#answered_questions" class="anchor"></a>answered_questions()</h2>
 <p>The function <code><a href="https://www.rdocumentation.org/packages/legco/topics/questions">legco::questions()</a></code> returns only the subject of the question put on the government but not the full text and the answering body:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/questions">questions</a></span>(<span class="dt">rundown_id =</span> <span class="dv">294209</span>)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/questions">questions</a></span>(<span class="dt">rundown_id =</span> <span class="dv">294209</span>)</code></pre></div>
 <pre><code>##           MeetingDate QuestionType
 ## 1 2013-01-23T00:00:00         Oral
 ##                                             Subject      Speaker SpeakerID
@@ -205,17 +154,19 @@
 ##                                                                                    HansardFileURL
 ## 1 https://www.legco.gov.hk/yr12-13/english/counmtg/hansard/cm0123-translate-e.pdf#nameddest=orq01</code></pre>
 <p>While the function <code><a href="../reference/answered_questions.html">answered_questions()</a></code> fetches the question text and other detailed information as well:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/answered_questions.html">answered_questions</a></span>(<span class="dt">rundown_id =</span> <span class="dv">294209</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="co"># All asking members (including supplementary questions)</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/speakers">speakers</a></span>(w<span class="op">$</span>AskingSpeakerID)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/answered_questions.html">answered_questions</a></span>(<span class="dt">rundown_id =</span> <span class="dv">294209</span>)</code></pre></div>
+<p>Note that if <code>verbose</code> is enabled (which is by default), multiple messages will be shown. They are created when the function is making multiple requests to the APIs. The actual number of records in the final output data frame is displayed in the last message. For instance, it is 1 in the example above.</p>
+<p><code><a href="../reference/answered_questions.html">answered_questions()</a></code> returns the asking members of the main question and the supplementary questions (if any):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># All asking members (including supplementary questions)</span>
+legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/speakers">speakers</a></span>(w<span class="op">$</span>AskingSpeakerID)</code></pre></div>
 <pre><code>##   SpeakerID NameChi       NameEng Type Initial  FirstName LastName
 ## 1       109  梁繼昌 KENNETH LEUNG   MB      KL Kai-cheong    LEUNG
 ## 2       106  陳家洛  KENNETH CHAN   MB      KC     Ka-lok     CHAN
 ## 3        66  湯家驊    RONNY TONG   MB     TKW     Ka-wah     TONG
 ## 4        95  田北俊    JAMES TIEN   MB     TPC   Pei-chun     TIEN
 ## 5        91  黃毓民  WONG YUK-MAN   MB     WYM    Yuk-man     WONG</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># The answering official of the question</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/speakers">speakers</a></span>(w<span class="op">$</span>AnsweringSpeakerID)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The answering official of the question</span>
+legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/speakers">speakers</a></span>(w<span class="op">$</span>AnsweringSpeakerID)</code></pre></div>
 <pre><code>##   SpeakerID              NameChi
 ## 1        15 政制及內地事務局局長
 ## 2        13 財經事務及庫務局局長
@@ -225,22 +176,23 @@
 ##   LastName
 ## 1         
 ## 2</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Excerpts of the question text</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>w<span class="op">$</span>Question[[<span class="dv">1</span>]][<span class="dv">11</span>]</span></code></pre></div>
+<p>The full text of the main question, supplementary questions (if any), answers and miscellaneous conversations (e.g. some member rising to a point of order) are contained in lists:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Excerpts of the question text</span>
+w<span class="op">$</span>Question[[<span class="dv">1</span>]][<span class="dv">11</span>]</code></pre></div>
 <pre><code>## [1] "MR KENNETH LEUNG (in Cantonese): My supplementary question is: Throughout the years, how many complaints about privacy have been lodged by directors in relation to the arrangement concerning the inspection of the Companies Register?    "</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Excerpts of the answer text</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>w<span class="op">$</span>Answer[[<span class="dv">1</span>]][<span class="dv">8</span>]</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Excerpts of the answer text</span>
+w<span class="op">$</span>Answer[[<span class="dv">1</span>]][<span class="dv">8</span>]</code></pre></div>
 <pre><code>## [1] "SECRETARY FOR FINANCIAL SERVICES AND THE TREASURY (in Cantonese): In dealing with the Companies Ordinance, the target of consultation is the public, and we had widely promoted the relevant contents.  I think we had already extensively consulted the public. "</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Excerpts of key appointment holders (e.g. President)/LegCo staff</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>w<span class="op">$</span>Misc[[<span class="dv">1</span>]][<span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Excerpts of key appointment holders (e.g. President)/LegCo staff</span>
+w<span class="op">$</span>Misc[[<span class="dv">1</span>]][<span class="dv">10</span>]</code></pre></div>
 <pre><code>## [1] "PRESIDENT (in Cantonese): Which Secretary will reply?  Secretary for Financial Services and the Treasury, please reply.  "</code></pre>
 <p>It is also possible to fetch all questions raised by any given member and filter by parameters that are supported by <code><a href="https://www.rdocumentation.org/packages/legco/topics/questions">legco::questions()</a></code>.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Search all written questions asked by SpeakerID 61 and MemberID 209</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># from January to April 2019 in Chinese</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/answered_questions.html">answered_questions</a></span>(<span class="dt">speaker_id =</span> <span class="dv">61</span>, <span class="dt">member_id =</span> <span class="dv">209</span>,</span>
-<span id="cb34-4"><a href="#cb34-4"></a>                        <span class="dt">from =</span> <span class="st">"2019-01-01"</span>, <span class="dt">to =</span><span class="st">"2019-04-30"</span>,</span>
-<span id="cb34-5"><a href="#cb34-5"></a>                        <span class="dt">type =</span> <span class="st">"written"</span>, <span class="dt">lang =</span> <span class="st">"zh"</span>)</span>
-<span id="cb34-6"><a href="#cb34-6"></a>w[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search all written questions asked by SpeakerID 61 and MemberID 209</span>
+<span class="co"># from January to April 2019 in Chinese</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/answered_questions.html">answered_questions</a></span>(<span class="dt">speaker_id =</span> <span class="dv">61</span>, <span class="dt">member_id =</span> <span class="dv">209</span>,
+                        <span class="dt">from =</span> <span class="st">"2019-01-01"</span>, <span class="dt">to =</span><span class="st">"2019-04-30"</span>,
+                        <span class="dt">type =</span> <span class="st">"written"</span>, <span class="dt">lang =</span> <span class="st">"zh"</span>)
+w[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre></div>
 <pre><code>##           MeetingDate QuestionType
 ## 1 2019-01-16T00:00:00      Written
 ## 2 2019-01-16T00:00:00      Written
@@ -256,72 +208,15 @@
 ## 5 領展房地產投資信託基金擁有或售出的停車場  涂謹申        39
 ## 6               為永久造口病人提供財政資助  李國麟        61</code></pre>
 </div>
-<div id="search_committee" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search_committee" class="anchor"></a>search_committee()</h2>
-<p>The function <code>search_committee</code> allows searching committee with full or partial name of the committee:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Search all Bills Committees established in the fixth term of LegCo</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"Bills Committee"</span>, <span class="dt">term_id =</span> <span class="dv">5</span>)</span>
-<span id="cb36-3"><a href="#cb36-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
-<pre><code>##   CommitteeID CommitteeCode
-## 1        2724       BC/1/16
-## 2        2834       BC/1/17
-## 3        2960       BC/1/18
-## 4        3011      BC/10/18
-## 5        2712     BC/101/16
-## 6        2844     BC/101/17
-##                                                                                            NameEng
-## 1 Bills Committee on Stamp Duty (Amendment) Bill 2017 and Stamp Duty (Amendment) (No. 2) Bill 2017
-## 2                                  Bills Committee on Inland Revenue (Amendment) (No. 5) Bill 2017
-## 3                                  Bills Committee on Inland Revenue (Amendment) (No. 6) Bill 2018
-## 4                         Bills Committee on Occupational Retirement Schemes (Amendment) Bill 2019
-## 5                                             Bills Committee on Arbitration (Amendment) Bill 2016
-## 6                                                 Bills Committee on Banking (Amendment) Bill 2017
-##                                                                       NameChi
-## 1 《2017年印花稅(修訂)條例草案》及《2017年印花稅(修訂)(第2號)條例草案》委員會
-## 2                                   《2017年稅務(修訂)(第5號)條例草案》委員會
-## 3                                   《2018年稅務(修訂)(第6號)條例草案》委員會
-## 4                                  《2019年職業退休計劃(修訂)條例草案》委員會
-## 5                                          《2016年仲裁(修訂)條例草案》委員會
-## 6                                        《2017年銀行業(修訂)條例草案》委員會</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Search </span></span></code></pre></div>
-</div>
-<div id="search_division" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search_division" class="anchor"></a>search_division()</h2>
-<p>The LegCo Voting Result Database does not provide a full list of votes that have taken place in Council and committee meetings. With the function <code><a href="../reference/search_division.html">search_division()</a></code>, it is possible to search the list of division(s) conducted on any given date, by any given committee or during any given meeting slot:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Search votes conducted on April 3, 2019 by the Establishment Subcommittee</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">target_date =</span> <span class="st">"2019-04-03"</span>, <span class="dt">committee_id =</span> <span class="dv">2943</span>)</span>
-<span id="cb39-3"><a href="#cb39-3"></a>w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
-<pre><code>##               VoteTime                  Committee TermID
-## 1  2019-04-03T09:46:15 Establishment Subcommittee      5
-## 33 2019-04-03T09:48:17 Establishment Subcommittee      5
-## 65 2019-04-03T09:50:03 Establishment Subcommittee      5
-##                                                                                                                                                                                                                                                                                                                             MotionEn
-## 1                                                                                           EC(2018-19)30 PROPOSED MAKING PERMANENT OF THREE SUPERNUMERARY POSTS OF CHIEF ENGINEER IN THE CIVIL ENGINEERING AND DEVELOPMENT DEPARTMENT TO TAKE FORWARD POLICY INITIATIVES TO INCREASE LAND SUPPLY IN THE SHORT, MEDIUM AND LONG TERM
-## 33                       EC(2018-19)30 - Proposed creation of one supernumerary post of a Chief Estate Surveyor in the Lands Department and making permanent of a supernumerary post of Chief Town Planner in the Planning Department  to take forward policy initiatives to increase land supply in the short, medium and long term
-## 65 EC(2018-19)30 - Proposed creation of one supernumerary post of an Administrative Officer Staff Grade C and creation of one permanent post of a Chief Estate Surveyor/Principal Valuation Surveyor in the Government Property Agency to take forward policy initiatives to increase land supply in the short, medium and long term
-##    OverallResult
-## 1         Passed
-## 33        Passed
-## 65        Passed</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Search vote conducted during a specific meeting</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">slot_id =</span> <span class="dv">179602</span>)</span>
-<span id="cb41-3"><a href="#cb41-3"></a>w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
-<pre><code>##              VoteTime       Committee TermID
-## 1 2019-04-03T19:07:55 Council Meeting      5
-##                                         MotionEn OverallResult
-## 1 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT”     Negatived</code></pre>
-</div>
 <div id="member_voting_record" class="section level2">
 <h2 class="hasAnchor">
 <a href="#member_voting_record" class="anchor"></a>member_voting_record()</h2>
 <p>The function <code><a href="https://www.rdocumentation.org/packages/legco/topics/voting_record">legco::voting_record()</a></code> of the Voting Results Database does not accept filtering parameters of any unique identifier from other databases such as <code>SpeakerID</code>, <code>MemberID</code>, <code>CommitteeID</code> and <code>SlotID</code>. Instead, it only takes the full Chinese names of LegCo members and full English name of the committee. With the function <code><a href="../reference/member_voting_record.html">member_voting_record()</a></code>, it is possible to apply these idenitifers to search the voting results.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Search the voting records of SpeakerID 102 and MemberID 910</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="co"># in CommitteeID 2567 since June 15, 2019.</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/member_voting_record.html">member_voting_record</a></span>(<span class="dt">speaker_id =</span> <span class="dv">102</span>, <span class="dt">member_id =</span> <span class="dv">910</span>,</span>
-<span id="cb43-4"><a href="#cb43-4"></a>                          <span class="dt">committee_id =</span> <span class="dv">2567</span>, <span class="dt">from =</span> <span class="st">"2019-06-15"</span>)</span>
-<span id="cb43-5"><a href="#cb43-5"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search the voting records of SpeakerID 102 and MemberID 910</span>
+<span class="co"># in CommitteeID 2567 since June 15, 2019.</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/member_voting_record.html">member_voting_record</a></span>(<span class="dt">speaker_id =</span> <span class="dv">102</span>, <span class="dt">member_id =</span> <span class="dv">910</span>,
+                          <span class="dt">committee_id =</span> <span class="dv">2567</span>, <span class="dt">from =</span> <span class="st">"2019-06-15"</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</code></pre></div>
 <pre><code>##              VoteTime         Committee TermID
 ## 1 2019-06-28T15:57:41 Finance Committee      5
 ## 2 2019-06-28T15:57:41 Finance Committee      5
@@ -350,9 +245,9 @@
 ## 4        Passed 朱凱廸 CHU Hoi-dick  Yes
 ## 5        Passed 馬逢國 MA Fung-kwok  Yes
 ## 6        Passed 朱凱廸 CHU Hoi-dick  Yes</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Search the voting records of meeting with SlotID </span></span>
-<span id="cb45-2"><a href="#cb45-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/member_voting_record.html">member_voting_record</a></span>(<span class="dt">slot_id =</span> <span class="dv">177529</span>)</span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search the voting records of meeting with SlotID </span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/member_voting_record.html">member_voting_record</a></span>(<span class="dt">slot_id =</span> <span class="dv">177529</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</code></pre></div>
 <pre><code>##              VoteTime                 Committee TermID
 ## 1 2019-06-19T09:31:49 Public Works Subcommittee      5
 ## 2 2019-06-19T09:31:49 Public Works Subcommittee      5
@@ -382,6 +277,168 @@
 ## 5       CHAN Hak-kan     Yes
 ## 6 Dr Priscilla LEUNG     Yes</code></pre>
 </div>
+<div id="search_committee" class="section level2">
+<h2 class="hasAnchor">
+<a href="#search_committee" class="anchor"></a>search_committee()</h2>
+<p>The function <code><a href="../reference/search_committee.html">search_committee()</a></code> allows searching committee with full or partial name of the committee:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search all Bills Committees established in the fixth term of LegCo</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"bills committee"</span>, <span class="dt">term_id =</span> <span class="dv">5</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</code></pre></div>
+<pre><code>##   CommitteeID CommitteeCode
+## 1        2724       BC/1/16
+## 2        2834       BC/1/17
+## 3        2960       BC/1/18
+## 4        3011      BC/10/18
+## 5        2712     BC/101/16
+## 6        2844     BC/101/17
+##                                                                                            NameEng
+## 1 Bills Committee on Stamp Duty (Amendment) Bill 2017 and Stamp Duty (Amendment) (No. 2) Bill 2017
+## 2                                  Bills Committee on Inland Revenue (Amendment) (No. 5) Bill 2017
+## 3                                  Bills Committee on Inland Revenue (Amendment) (No. 6) Bill 2018
+## 4                         Bills Committee on Occupational Retirement Schemes (Amendment) Bill 2019
+## 5                                             Bills Committee on Arbitration (Amendment) Bill 2016
+## 6                                                 Bills Committee on Banking (Amendment) Bill 2017
+##                                                                       NameChi
+## 1 《2017年印花稅(修訂)條例草案》及《2017年印花稅(修訂)(第2號)條例草案》委員會
+## 2                                   《2017年稅務(修訂)(第5號)條例草案》委員會
+## 3                                   《2018年稅務(修訂)(第6號)條例草案》委員會
+## 4                                  《2019年職業退休計劃(修訂)條例草案》委員會
+## 5                                          《2016年仲裁(修訂)條例草案》委員會
+## 6                                        《2017年銀行業(修訂)條例草案》委員會</code></pre>
+<p>By default, <code><a href="../reference/search_committee.html">search_committee()</a></code> returns results with the exact match of the search term. It is possible to disable exact matching so that the function returns results containing any of the English words/Chinese characters in the search term:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search all committees with either "taxi" or "ferry" in the name</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"taxi ferry"</span>, <span class="dt">exact =</span> <span class="ot">FALSE</span>)
+w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</code></pre></div>
+<pre><code>##   CommitteeID CommitteeCode
+## 1        3016     BC/102/18
+## 2        2905     BC/104/17
+##                                                   NameEng
+## 1        Bills Committee on Franchised Taxi Services Bill
+## 2 Bills Committee on Ferry Services (Amendment) Bill 2018
+##                                  NameChi
+## 1         《專營的士服務條例草案》委員會
+## 2 《2018年渡輪服務(修訂)條例草案》委員會</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search all committees with either "動" or "植" in the name</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"動植"</span>, <span class="dt">exact =</span> <span class="ot">FALSE</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</code></pre></div>
+<pre><code>##   CommitteeID CommitteeCode
+## 1        2737      BC/53/16
+## 2        2768       BC/6/16
+## 3        2492      PL/FE/S3
+## 4        2703      PL/FE/S4
+## 5        2992      PL/TP/S2
+## 6        2318      SC/10/13
+##                                                                                                           NameEng
+## 1          Bills Committee on Cross-boundary Movement of Physical Currency and Bearer Negotiable Instruments Bill
+## 2                 Bills Committee on Protection of Endangered Species of Animals and Plants (Amendment) Bill 2017
+## 3                                        Subcommittee on Issues Relating to Animal Welfare and Cruelty to Animals
+## 4                                                          Subcommittee to Study Issues Relating to Animal Rights
+## 5                                                   Subcommittee on Hillside Escalator Links and Elevator Systems
+## 6 Subcommittee on Proposed Resolution under Section 5(4) of the Motor Vehicles (First Registration Tax) Ordinance
+##                                                          NameChi
+## 1           《實體貨幣及不記名可轉讓票據跨境流動條例草案》委員會
+## 2               《2017年保護瀕危動植物物種(修訂)條例草案》委員會
+## 3                       有關動物福利及殘酷對待動物事宜小組委員會
+## 4                                 研究動物權益相關事宜小組委員會
+## 5                 上坡地區自動扶梯連接系統和升降機系統小組委員會
+## 6 根據《汽車(首次登記稅)條例》第5(4)條動議的擬議決議案小組委員會</code></pre>
+<p><code><a href="../reference/search_committee.html">search_committee()</a></code> returns results containing the search term, including non-exact words. For instance, records containing the term <code>"taxi"</code> are included in the search result of the search term <code>"tax"</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search result of "tax"</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"tax"</span>)
+w<span class="op">$</span>NameEng</code></pre></div>
+<pre><code>## [1] "Bills Committee on Franchised Taxi Services Bill"                                                                                                                                                 
+## [2] "Bills Committee on Inland Revenue and MPF Schemes Legislation (Tax Deductions for Annuity Premiums and MPF Voluntary Contributions) (Amendment) Bill 2018"                                        
+## [3] "Bills Committee on Inland Revenue (Profits Tax Exemption for Funds) (Amendment) Bill 2018"                                                                                                        
+## [4] "Bills Committee on Inland Revenue (Amendment) (Tax Concessions) Bill 2019"                                                                                                                        
+## [5] "Subcommittee on Tax Reserve Certificates (Rate of Interest) (Consolidation) (Amendment) Notice 2018"                                                                                              
+## [6] "Subcommittee on Proposed Resolution under Section 5(4) of the Motor Vehicles (First Registration Tax) Ordinance"                                                                                  
+## [7] "Subcommittee on Inland Revenue (Exchange of Information relating to Taxes) (United States of America) Order"                                                                                      
+## [8] "Subcommittee on Specification of Arrangements (The Mainland of China) (Avoidance of Double Taxation and the Prevention of Fiscal Evasion with respect to Taxes on Income) (Fourth Protocol) Order"
+## [9] "Subcommittee on Exemption from Profits Tax (People's Bank of China Debt Instrument) Order"</code></pre>
+<p>To have only exact words in the result, insert a space before and/or after the word, e.g. <code>" tax "</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search result of " tax "</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">" tax "</span>)
+w<span class="op">$</span>NameEng</code></pre></div>
+<pre><code>## [1] "Bills Committee on Inland Revenue (Profits Tax Exemption for Funds) (Amendment) Bill 2018"          
+## [2] "Subcommittee on Tax Reserve Certificates (Rate of Interest) (Consolidation) (Amendment) Notice 2018"
+## [3] "Subcommittee on Exemption from Profits Tax (People's Bank of China Debt Instrument) Order"</code></pre>
+</div>
+<div id="search_division" class="section level2">
+<h2 class="hasAnchor">
+<a href="#search_division" class="anchor"></a>search_division()</h2>
+<p>The LegCo Voting Result Database does not provide a full list of votes that have taken place in Council and committee meetings. With the function <code><a href="../reference/search_division.html">search_division()</a></code>, it is possible to search the list of division(s) conducted on any given date, by any given committee or during any given meeting slot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search votes conducted on April 3, 2019 by the Establishment Subcommittee</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">search_date =</span> <span class="st">"2019-04-03"</span>, <span class="dt">committee_id =</span> <span class="dv">2943</span>)
+w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</code></pre></div>
+<pre><code>##               VoteTime                  Committee TermID
+## 1  2019-04-03T09:46:15 Establishment Subcommittee      5
+## 33 2019-04-03T09:48:17 Establishment Subcommittee      5
+## 65 2019-04-03T09:50:03 Establishment Subcommittee      5
+##                                                                                                                                                                                                                                                                                                                             MotionEn
+## 1                                                                                           EC(2018-19)30 PROPOSED MAKING PERMANENT OF THREE SUPERNUMERARY POSTS OF CHIEF ENGINEER IN THE CIVIL ENGINEERING AND DEVELOPMENT DEPARTMENT TO TAKE FORWARD POLICY INITIATIVES TO INCREASE LAND SUPPLY IN THE SHORT, MEDIUM AND LONG TERM
+## 33                       EC(2018-19)30 - Proposed creation of one supernumerary post of a Chief Estate Surveyor in the Lands Department and making permanent of a supernumerary post of Chief Town Planner in the Planning Department  to take forward policy initiatives to increase land supply in the short, medium and long term
+## 65 EC(2018-19)30 - Proposed creation of one supernumerary post of an Administrative Officer Staff Grade C and creation of one permanent post of a Chief Estate Surveyor/Principal Valuation Surveyor in the Government Property Agency to take forward policy initiatives to increase land supply in the short, medium and long term
+##    OverallResult
+## 1         Passed
+## 33        Passed
+## 65        Passed</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Search vote conducted during a specific meeting</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">slot_id =</span> <span class="dv">179602</span>)
+w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</code></pre></div>
+<pre><code>##              VoteTime       Committee TermID
+## 1 2019-04-03T19:07:55 Council Meeting      5
+##                                         MotionEn OverallResult
+## 1 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT”     Negatived</code></pre>
+</div>
+<div id="search_member" class="section level2">
+<h2 class="hasAnchor">
+<a href="#search_member" class="anchor"></a>search_member()</h2>
+<p>The unique identifiers of different LegCo databases are not interchangeable, for instance <code>SpeakerID</code> used in the Hansard Database and <code>MemberID</code> used in the Schedule Database. <code><a href="../reference/search_member.html">search_member()</a></code> provides an easy way to work with <code>SpeakerID</code> and <code>MemberID</code> interchangeably:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># A combined list of all members from legco::speakers() and legco::member()</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>()
+w[<span class="dv">63</span><span class="op">:</span><span class="dv">64</span>, ]</code></pre></div>
+<pre><code>##    SpeakerID MemberID Type NameChi      NameEng TermID TitleEng SurnameEng
+## 63       161      929   MB  陳凱欣 CHAN HOI-YAN      5                CHAN
+## 64       144      912   MB  容海恩 YUNG HOI-YAN      5                YUNG
+##    FirstnameEng EnglishName HonourableEng SurnameChi FirstnameChi TitleChi
+## 63      Hoi-yan                                   陳         凱欣     議員
+## 64      Hoi-yan                        JP         容         海恩     議員
+##    HonourableChi
+## 63              
+## 64            JP</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lookup the MemberID of SpeakerID 63</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">speaker_id =</span> <span class="dv">63</span>)
+w<span class="op">$</span>MemberID</code></pre></div>
+<pre><code>## [1] 260</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lookup the SpeakerID of MemberID 273</span>
+w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">member_id =</span> <span class="dv">273</span>)
+w<span class="op">$</span>SpeakerID</code></pre></div>
+<pre><code>## [1] 75</code></pre>
+<p><code><a href="../reference/search_member.html">search_member()</a></code> also allows searching by full or partial name in English or Chinese:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lookup members with "謙" in their names</span>
+<span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"謙"</span>)</code></pre></div>
+<pre><code>##   SpeakerID MemberID Type NameChi      NameEng TermID TitleEng SurnameEng
+## 1        82      101   MB  葉國謙  IP KWOK-HIM      4      Hon         IP
+## 2        53      187   MB  石禮謙 ABRAHAM SHEK   4, 5      Hon       SHEK
+##   FirstnameEng EnglishName HonourableEng SurnameChi FirstnameChi TitleChi
+## 1     Kwok-him                   GBS, JP         葉         國謙     議員
+## 2      Lai-him     Abraham       GBS, JP         石         禮謙     議員
+##   HonourableChi
+## 1       GBS, JP
+## 2       GBS, JP</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lookup members with "ting" in their names</span>
+<span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"ting"</span>)</code></pre></div>
+<pre><code>##   SpeakerID MemberID Type NameChi         NameEng TermID TitleEng
+## 1       138      911   MB  林卓廷  LAM CHEUK-TING      5         
+## 2        65      267   MB  黃定光 WONG TING-KWONG   4, 5      Hon
+##   SurnameEng FirstnameEng EnglishName HonourableEng SurnameChi
+## 1        LAM   Cheuk-ting                                   林
+## 2       WONG   Ting-kwong                   GBS, JP         黃
+##   FirstnameChi TitleChi HonourableChi
+## 1         卓廷     議員              
+## 2         定光     議員       GBS, JP</code></pre>
+<p>The searching parameter of <code><a href="../reference/search_member.html">search_member()</a></code> has the same options with that of <code><a href="../reference/search_committee.html">search_committee()</a></code> such as the exact search option. Refer <a href="#search_committee">here</a> for detailed examples on how to apply these options in your search.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -392,11 +449,11 @@
 <li><a href="#prerequiste">Prerequiste</a></li>
       <li><a href="#installing-legcoplus">Installing legcoplus</a></li>
       <li><a href="#list-of-functions">List of Functions</a></li>
-      <li><a href="#all_members">all_members()</a></li>
       <li><a href="#answered_questions">answered_questions()</a></li>
+      <li><a href="#member_voting_record">member_voting_record()</a></li>
       <li><a href="#search_committee">search_committee()</a></li>
       <li><a href="#search_division">search_division()</a></li>
-      <li><a href="#member_voting_record">member_voting_record()</a></li>
+      <li><a href="#search_member">search_member()</a></li>
       </ul>
 </div>
       </div>
