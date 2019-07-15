@@ -47,6 +47,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143765255-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143765255-1');
+</script>
+
   </head>
 
   <body>
@@ -116,9 +126,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>search_committee</span>(<span class='no'>search_term</span>, <span class='kw'>term_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>search_committee</span>(<span class='no'>search_term</span>, <span class='kw'>term_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>legco_search_committee</span>(<span class='no'>search_term</span>, <span class='kw'>term_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>legco_search_committee</span>(<span class='no'>search_term</span>, <span class='kw'>term_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>exact</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,6 +144,11 @@ name of a committee.</p></td>
       <th>term_id</th>
       <td><p>The id of a term, or a vector of ids. If `NULL`, searches
 committees from all terms. Defaults to `NULL`.</p></td>
+    </tr>
+    <tr>
+      <th>exact</th>
+      <td><p>Whether to look for exact match of the search term. Defaults to
+`TRUE`. Defaults to `TRUE`.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
