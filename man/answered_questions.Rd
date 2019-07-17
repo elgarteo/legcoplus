@@ -22,8 +22,9 @@ output from the function `legco::speakers()`. Defaults to `NULL`.}
 \item{member_id}{The member ID, or a vector of IDs, as specified in the
 output of the function `legco::member()`. Defaults to `NULL`.}
 
-\item{rundown_id}{The id of a rundown, or a vector of ids, as specified in
-the output of the function `legco::rundown()`. Defaults to `NULL`.}
+\item{rundown_id}{The starting id of a rundown, or a vector of ids, as
+specified in the output of the function `legco::rundown()`. Defaults to
+`NULL`.}
 
 \item{type}{The type of question. `'oral'` returns oral questions.
 `'written'` returns written questions. `'all'` returns all questions.
@@ -53,6 +54,6 @@ language option is ignored. Defaults to `FALSE`.}
 \item{verbose}{Defaults to `TRUE`.}
 }
 \description{
-Fetch full text and answered questions put to the government by specific
-LegCo member(s).
+Fetch full text and answered questions put to the government by LegCo
+member(s).
 }

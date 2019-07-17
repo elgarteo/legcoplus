@@ -1,7 +1,7 @@
 #' Answered Questions in LegCo
 #'
-#' Fetch full text and answered questions put to the government by specific
-#' LegCo member(s).
+#' Fetch full text and answered questions put to the government by LegCo
+#' member(s).
 #'
 #' @param speaker_id The Speaker ID, or a vector of IDs, as specified in the
 #'   output from the function `legco::speakers()`. Defaults to `NULL`.
@@ -9,8 +9,9 @@
 #' @param member_id The member ID, or a vector of IDs, as specified in the
 #'   output of the function `legco::member()`. Defaults to `NULL`.
 #'
-#' @param rundown_id The id of a rundown, or a vector of ids, as specified in
-#'   the output of the function `legco::rundown()`. Defaults to `NULL`.
+#' @param rundown_id The starting id of a rundown, or a vector of ids, as
+#'   specified in the output of the function `legco::rundown()`. Defaults to
+#'   `NULL`.
 #'
 #' @param lang The language of hansard files to search from. `'en'` returns the
 #'   English version. `'zh'` returns the Traditional Chinese version. Defaults
