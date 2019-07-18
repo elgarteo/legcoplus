@@ -22,4 +22,7 @@
 #'
 #' @examples \dontrun{legco_member_affiliation[["5"]]}
 #' 
+#' @examples
+#' \dontrun{legco_member_affiliation[["5"]]}
+#' 
 "legco_member_affiliation"

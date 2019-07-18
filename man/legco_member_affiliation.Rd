@@ -31,5 +31,7 @@ a full list of real-life party membership.
 \examples{
 \dontrun{legco_member_affiliation[["5"]]}
 
+\dontrun{legco_member_affiliation[["5"]]}
+
 }
 \keyword{datasets}
