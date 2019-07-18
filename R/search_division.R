@@ -53,8 +53,11 @@ search_division <- function(search_date = NULL, committee_id = NULL, slot_id = N
     committee_term <- NULL
   }
   
-  output <- capture.output({df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
-                                                from = from, to = to, verbose = verbose)}, type = "message")
+  output <- capture.output({
+    df <- legco::voting_record(committee = committee_name,
+                               term_id = committee_term, from = from,
+                               to = to, verbose = verbose)}, 
+    type = "message")
   
   n <- stringr::str_extract(output[2], "\\. [0-9]+")
   n <- as.numeric(gsub("\\. ", "", n))
