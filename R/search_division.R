@@ -53,8 +53,19 @@ search_division <- function(search_date = NULL, committee_id = NULL, slot_id = N
     committee_term <- NULL
   }
   
-  df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
-                             from = from, to = to, verbose = verbose)
+  output <- capture.output({df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
+                                                from = from, to = to, verbose = verbose)}, type = "message")
+  
+  n <- stringr::str_extract(output[2], "\\. [0-9]+")
+  n <- as.numeric(gsub("\\. ", "", n))
+  
+  if (n > 10000) {
+    df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
+                               from = from, to = to, verbose = verbose, n = n)
+  } else {
+    message(output[1])
+    message(output[2])
+  }
   
   if (!is.null(df)) {
     df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh",
