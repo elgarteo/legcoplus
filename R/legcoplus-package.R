@@ -19,5 +19,6 @@
 #' @docType package
 #' @name legcoplus
 #' @importFrom dplyr full_join
+#' @importFrom stringr str_extract
 #' @import legco 
 NULL

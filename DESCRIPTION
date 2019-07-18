@@ -4,10 +4,12 @@ Title: Enhances data output from Hong Kong Legislative Council APIs
 Version: 0.0.9999
 Author: Elgar Teo
 Maintainer: Elgar Teo <elgarteo@hku.hk>
+URL: https://elgarteo.ga/legco/legcoplus
 Description: This R package works with the package legco. The functions in this package 
   presents data from the LegCo APIs in a better way.
 Imports: 
   dplyr, 
+  stringr, 
   legco
 License: MIT + file LICENSE
 Encoding: UTF-8
