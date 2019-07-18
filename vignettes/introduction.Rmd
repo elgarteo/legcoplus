@@ -64,6 +64,8 @@ The package contains the following functions:
 
 * `answered_questions()` fetches more detailed information and the full
 text of questions put on the government by any given LegCo member.
+* `legco_member_affiliation` contains the declared political affiliation
+and constituency of every member in each term.
 * `member_voting_record()` returns the voting record in LegCo Council 
 and committee meetings.
 * `search_committee()` searches committee by full or partial name of committee.
@@ -137,6 +139,18 @@ w <- answered_questions(speaker_id = 61, member_id = 209,
                         from = "2019-01-01", to ="2019-04-30",
                         type = "written", lang = "zh")
 w[, 1:5]
+```
+
+## legco_member_affiliation {#legco_member_affiliation}
+
+`legco_member_affiliation` is a list containing data frames of the political affiliation and 
+constituency of every member in each LegCo term. The dataframes are named by the respective 
+`TermID` they represent. For example, to fetch the data of the fifth term of LegCo:
+
+```{r }
+# Political affiliation of the sixth term of LegCo
+w <- legco_member_affiliation[["5"]]
+head(w)
 ```
 
 ## member_voting_record() {#member_voting_record}

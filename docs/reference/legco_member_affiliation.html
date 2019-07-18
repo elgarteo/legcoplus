@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • legcoplus</title>
+<title>Political Affliation of LegCo Members — legco_member_affiliation • legcoplus</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,11 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Political Affliation of LegCo Members — legco_member_affiliation" />
+
+<meta property="og:description" content="A list of data frames containing the political affiliation and constituency
+of each Legco members in each term." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +61,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -110,78 +114,61 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Political Affliation of LegCo Members</h1>
+    
+    <div class="hidden name"><code>legco_member_affiliation.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>A list of data frames containing the political affiliation and constituency
+of each Legco members in each term.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='no'>legco_member_affiliation</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="answered_questions.html">answered_questions()</a></code> <code><a href="answered_questions.html">legco_answered_questions()</a></code> </p>
-        </td>
-        <td><p>Answered Questions in LegCo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="legcoplus.html">legcoplus</a></code> </p>
-        </td>
-        <td><p>legcoplus: Improves the Hong Kong Legislative Council APIs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="legco_member_affiliation.html">legco_member_affiliation</a></code> </p>
-        </td>
-        <td><p>Political Affliation of LegCo Members</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="member_voting_record.html">member_voting_record()</a></code> <code><a href="member_voting_record.html">legco_member_voting_record()</a></code> </p>
-        </td>
-        <td><p>Voting Records of a LegCo Member</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="search_committee.html">search_committee()</a></code> <code><a href="search_committee.html">legco_search_committee()</a></code> </p>
-        </td>
-        <td><p>Search Committee</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="search_division.html">search_division()</a></code> <code><a href="search_division.html">legco_search_division()</a></code> </p>
-        </td>
-        <td><p>Search Division</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="search_member.html">search_member()</a></code> <code><a href="search_member.html">legco_search_member()</a></code> </p>
-        </td>
-        <td><p>Search LegCo Member</p></td>
-      </tr>
-    </tbody>
-    </table>
+    <p>A list containing 1 dataframe with 10 variables. Each data frame
+  represents one ternm, with the `TermID` as the name of the dataframe.</p><dl class='dl-horizontal'>
+<dt>SpeakerID</dt><dd><p>The id of the member used in the Hansard
+  Database</p></dd> <dt>MemberID</dt><dd><p>The id of the member used in the Meeting Schedule
+  Database</p></dd> <dt>NameEng</dt><dd><p>English full name of the member</p></dd>
+  <dt>NameChi</dt><dd><p>Chinese full name of the member</p></dd> <dt>TypeEng</dt><dd><p>The type of
+  consituency that the member belongs to in English</p></dd> <dt>TypeChi</dt><dd><p>The type
+  of consituency that the member belongs to in Chinese</p></dd>
+  <dt>ConstituencyEng</dt><dd><p>The consituency that the member belongs to in
+  English</p></dd> <dt>ConstituencyChi</dt><dd><p>The consituency that the member belongs to
+  in Chinese</p></dd> <dt>AffiliationEng</dt><dd><p>The declared political affiliation of the
+  member in English</p></dd> <dt>AffiliationChi</dt><dd><p>The declared political affiliation
+  of the member in Chinese</p></dd> </dl>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Political affiliation is what the member has declared to LegCo, not necessary
+a full list of real-life party membership.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>legco_member_affiliation</span><span class='kw'>[[</span><span class='st'>"5"</span>]]
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
