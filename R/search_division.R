@@ -19,11 +19,13 @@
 #'   voting record of individual members. Defaults to `TRUE`.
 #'
 #' @param verbose Defaults to `TRUE`.
+#' 
+#' @param ... Parameters supported by `legco::voting_record()`.
 #'
 #' @export
 #' 
 search_division <- function(search_date = NULL, committee_id = NULL, slot_id = NULL,
-                            index = TRUE, verbose = TRUE) {
+                            index = TRUE, verbose = TRUE, ...) {
   if (is.null(search_date) & is.null(committee_id) & is.null(slot_id)) {
     stop("Please specifiy the date, a committee or a meeting slot.")
   }
@@ -56,32 +58,17 @@ search_division <- function(search_date = NULL, committee_id = NULL, slot_id = N
     committee_term <- NULL
   }
   
-  output <- capture.output({
-    df <- legco::voting_record(committee = committee_name,
-                               term_id = committee_term, from = from,
-                               to = to, verbose = TRUE)}, 
-    type = "message")
+  n <- legco::voting_record(committee = committee_name, term_id = committee_term,
+                            from = from, to = to, count = TRUE, verbose = FALSE, ...)
   
-  n <- stringr::str_extract(output[2], "\\. [0-9]+")
-  n <- as.numeric(gsub("\\. ", "", n))
-  
-  if (n > 10000) {
-    df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
-                               from = from, to = to, verbose = verbose, n = n)
-  } else {
-    message(output[1])
-    message(output[2])
-  }
+  df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
+                             from = from, to = to, verbose = verbose, n = n, ...)
   
   if (index) {
-    df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh",
-               "VoteSeparateMechanism", "GcPresentCount", "GcVoteCount",
-               "GcYesCount", "GcNoCount", "GcAbstainCount", "GcResult",
-               "FcPresentCount", "FcVoteCount", "FcYesCount", "FcNoCount",
-               "FcAbstainCount", "FcResult", "OverallPresentCount",
-               "OverallVoteCount", "OverallYesCount", "OverallNoCount",
-               "OverallAbstainCount", "OverallResult")]
+    df <- df[, c(6, 3:4, 7:30)]
     df <- df[!duplicated(df$VoteTime), ]
+  } else {
+    df <- df[, c(6, 3:4, 7:34)]
   }
   
   if (verbose) {

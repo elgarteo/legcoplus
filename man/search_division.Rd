@@ -6,10 +6,10 @@
 \title{Search Division}
 \usage{
 search_division(search_date = NULL, committee_id = NULL,
-  slot_id = NULL, index = TRUE, verbose = TRUE)
+  slot_id = NULL, index = TRUE, verbose = TRUE, ...)
 
 legco_search_division(search_date = NULL, committee_id = NULL,
-  slot_id = NULL, index = TRUE, verbose = TRUE)
+  slot_id = NULL, index = TRUE, verbose = TRUE, ...)
 }
 \arguments{
 \item{search_date}{The date and time when the division(s) was/were conducted.
@@ -26,6 +26,8 @@ all committee meetings.}
 voting record of individual members. Defaults to `TRUE`.}
 
 \item{verbose}{Defaults to `TRUE`.}
+
+\item{...}{Parameters supported by `legco::voting_record()`.}
 }
 \description{
 Fetch division(s) (votes) conducted by a given comittee(s) or on a given date

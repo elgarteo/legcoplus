@@ -9,7 +9,6 @@ Description: This R package works with the package legco. The functions in this 
   presents data from the LegCo APIs in a better way.
 Imports: 
   dplyr, 
-  stringr, 
   legco
 License: MIT + file LICENSE
 Encoding: UTF-8

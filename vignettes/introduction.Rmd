@@ -223,7 +223,7 @@ individual identifiers in search and the presentation of an index of votes.
 With the function `search_division()`, it is possible to search division(s) with CommitteeID, 
 and SlotID:
 
-```{r }
+```{r message=FALSE}
 # Search votes conducted on April 3, 2019 by the Establishment Subcommittee
 w <- search_division(search_date = "2019-04-03", committee_id = 2943)
 w[, c(1:4, 24)]
@@ -236,10 +236,15 @@ w[, c(1:4, 24)]
 By default, `search_division()` returns an index list of votes only. To fetch the voting record of
 each member: 
 
-```{r }
+```{r, message = FALSE}
 # Search voting record of each member conducted during a specific meeting
 w <- search_division(slot_id = 179602, index = FALSE)
 head(w[, c(1:4, 31:32, 34)])
+
+
+x <- capture.output(message("Hello"), type = "message")
+print(x)
+
 ```
 
 ## search_member() {#search_member}

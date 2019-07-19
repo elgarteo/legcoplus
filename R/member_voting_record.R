@@ -29,12 +29,14 @@
 #' @param n The number of entry to fetch. Defaults to `10000`.
 #'
 #' @param verbose Defaults to `TRUE`.
+#' 
+#' @param ... Parameters supported by `legco::voting_record()`.
 #'
 #' @export
 #' 
 member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_id = NULL,
                                  slot_id = NULL, from = '1990-01-01T00:00:00', to = Sys.time(),
-                                 n = 10000, verbose = TRUE) {
+                                 n = 10000, verbose = TRUE, ...) {
   if (is.null(speaker_id) & is.null(member_id) & is.null(committee_id) & is.null(slot_id)) {
     stop("Error: Please specifiy at least one LegCo member/committee/meeting slot.")
   }
@@ -71,8 +73,8 @@ member_voting_record <- function(speaker_id = NULL, member_id = NULL, committee_
     committee_term <- NULL
   }
   
-  df <- legco::voting_record(committee = committee_name, term_id = committee_term, 
-                             name_ch = members, from = from, to = to, n = n, verbose = verbose)
+  df <- legco::voting_record(committee = committee_name, term_id = committee_term, name_ch = members,
+                             from = from, to = to, n = n, verbose = verbose, ...)
   
   if (!is.null(df)) {
     df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh", "OverallResult",
