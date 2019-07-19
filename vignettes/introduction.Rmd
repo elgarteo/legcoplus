@@ -239,12 +239,7 @@ each member:
 ```{r, message = FALSE}
 # Search voting record of each member conducted during a specific meeting
 w <- search_division(slot_id = 179602, index = FALSE)
-head(w[, c(1:4, 31:32, 34)])
-
-
-x <- capture.output(message("Hello"), type = "message")
-print(x)
-
+head(w[, c(1:5, 28:29, 31)])
 ```
 
 ## search_member() {#search_member}
