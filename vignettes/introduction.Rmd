@@ -218,10 +218,10 @@ w$NameEng
 
 ## search_division() {#search_division}
 
-The LegCo Voting Result Database does not provide a full list of votes that have taken place 
-in Council and committee meetings. With the function `search_division()`, it is possible to 
-search the list of division(s) conducted on any given date, by any given committee or during
-any given meeting slot:
+`legco::voting_record()` of the LegCo Voting Result Database does not support the use of 
+individual identifiers in search and the presentation of an index of votes.
+With the function `search_division()`, it is possible to search division(s) with CommitteeID, 
+and SlotID:
 
 ```{r }
 # Search votes conducted on April 3, 2019 by the Establishment Subcommittee
@@ -231,6 +231,15 @@ w[, c(1:4, 24)]
 # Search vote conducted during a specific meeting
 w <- search_division(slot_id = 179602)
 w[, c(1:4, 24)]
+```
+
+By default, `search_division()` returns an index list of votes only. To fetch the voting record of
+each member: 
+
+```{r }
+# Search voting record of each member conducted during a specific meeting
+w <- search_division(slot_id = 179602, index = FALSE)
+head(w[, c(1:4, 31:32, 34)])
 ```
 
 ## search_member() {#search_member}
@@ -266,4 +275,3 @@ search_member(search_term = "ting")
 The searching parameter of `search_member()` has the same options with that of `search_committee()` 
 such as the exact search option. Refer [here](#search_committee) for detailed examples on how 
 to apply these options in your search.
-

@@ -15,12 +15,15 @@
 #' @param slot_id The id of a meeting slot. If `NULL`, returns voting records of
 #'   all committee meetings.
 #'
+#' @param index If `TRUE`, returns an index of votes. If `FALSE`, returns the
+#'   voting record of individual members. Defaults to `TRUE`.
+#'
 #' @param verbose Defaults to `TRUE`.
 #'
 #' @export
 #' 
-search_division <- function(search_date = NULL, committee_id = NULL, slot_id = NULL, 
-                          verbose = TRUE) {
+search_division <- function(search_date = NULL, committee_id = NULL, slot_id = NULL,
+                            index = TRUE, verbose = TRUE) {
   if (is.null(search_date) & is.null(committee_id) & is.null(slot_id)) {
     stop("Please specifiy the date, a committee or a meeting slot.")
   }
@@ -56,7 +59,7 @@ search_division <- function(search_date = NULL, committee_id = NULL, slot_id = N
   output <- capture.output({
     df <- legco::voting_record(committee = committee_name,
                                term_id = committee_term, from = from,
-                               to = to, verbose = verbose)}, 
+                               to = to, verbose = TRUE)}, 
     type = "message")
   
   n <- stringr::str_extract(output[2], "\\. [0-9]+")
@@ -70,7 +73,7 @@ search_division <- function(search_date = NULL, committee_id = NULL, slot_id = N
     message(output[2])
   }
   
-  if (!is.null(df)) {
+  if (index) {
     df <- df[c("VoteTime", "Committee", "TermID", "MotionEn", "MotionCh",
                "VoteSeparateMechanism", "GcPresentCount", "GcVoteCount",
                "GcYesCount", "GcNoCount", "GcAbstainCount", "GcResult",
@@ -79,13 +82,13 @@ search_division <- function(search_date = NULL, committee_id = NULL, slot_id = N
                "OverallVoteCount", "OverallYesCount", "OverallNoCount",
                "OverallAbstainCount", "OverallResult")]
     df <- df[!duplicated(df$VoteTime), ]
-    
-    if (verbose) {
-      message(nrow(df), " record(s) match(es) your parameters.")
-    }
-    
-    df
   }
+  
+  if (verbose) {
+    message(nrow(df), " record(s) match(es) your parameters.")
+  }
+  
+  df
 }
 
 #' @rdname search_division

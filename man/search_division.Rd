@@ -6,10 +6,10 @@
 \title{Search Division}
 \usage{
 search_division(search_date = NULL, committee_id = NULL,
-  slot_id = NULL, verbose = TRUE)
+  slot_id = NULL, index = TRUE, verbose = TRUE)
 
 legco_search_division(search_date = NULL, committee_id = NULL,
-  slot_id = NULL, verbose = TRUE)
+  slot_id = NULL, index = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{search_date}{The date and time when the division(s) was/were conducted.
@@ -21,6 +21,9 @@ to a date with `as.Date()`.}
 
 \item{slot_id}{The id of a meeting slot. If `NULL`, returns voting records of
 all committee meetings.}
+
+\item{index}{If `TRUE`, returns an index of votes. If `FALSE`, returns the
+voting record of individual members. Defaults to `TRUE`.}
 
 \item{verbose}{Defaults to `TRUE`.}
 }
