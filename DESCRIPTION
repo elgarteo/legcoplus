@@ -12,6 +12,7 @@ Imports:
   legco
 License: MIT + file LICENSE
 Encoding: UTF-8
+Depends: R(>= 3.5.0)
 LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 

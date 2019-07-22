@@ -79,7 +79,7 @@
     <div class="page-header toc-ignore">
       <h1>Introduction to legcoplus</h1>
             
-            <h4 class="date">2019-07-18</h4>
+            <h4 class="date">2019-07-21</h4>
       
       
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -101,7 +101,7 @@
 <div id="from-web" class="section level3">
 <h3 class="hasAnchor">
 <a href="#from-web" class="anchor"></a>From web</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"https://elgarteo.ga/legco/legco_0.0.9999.tar.gz"</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz"</span>, <span class="dt">repos =</span> <span class="ot">NULL</span>, <span class="dt">type =</span> <span class="st">"source"</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="installing-legcoplus" class="section level2">
@@ -403,7 +403,7 @@
 <div id="search_division" class="section level2">
 <h2 class="hasAnchor">
 <a href="#search_division" class="anchor"></a>search_division()</h2>
-<p>The LegCo Voting Result Database does not provide a full list of votes that have taken place in Council and committee meetings. With the function <code><a href="../reference/search_division.html">search_division()</a></code>, it is possible to search the list of division(s) conducted on any given date, by any given committee or during any given meeting slot:</p>
+<p><code><a href="https://www.rdocumentation.org/packages/legco/topics/voting_record">legco::voting_record()</a></code> of the LegCo Voting Result Database does not support the use of individual identifiers in search and the presentation of an index of votes. With the function <code><a href="../reference/search_division.html">search_division()</a></code>, it is possible to search division(s) with CommitteeID, and SlotID:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Search votes conducted on April 3, 2019 by the Establishment Subcommittee</span></span>
 <span id="cb35-2"><a href="#cb35-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">search_date =</span> <span class="st">"2019-04-03"</span>, <span class="dt">committee_id =</span> <span class="dv">2943</span>)</span>
 <span id="cb35-3"><a href="#cb35-3"></a>w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
@@ -411,29 +411,54 @@
 ## 1  2019-04-03T09:46:15 Establishment Subcommittee      5
 ## 33 2019-04-03T09:48:17 Establishment Subcommittee      5
 ## 65 2019-04-03T09:50:03 Establishment Subcommittee      5
-##                                                                                                                                                                                                                                                                                                                             MotionEn
-## 1                                                                                           EC(2018-19)30 PROPOSED MAKING PERMANENT OF THREE SUPERNUMERARY POSTS OF CHIEF ENGINEER IN THE CIVIL ENGINEERING AND DEVELOPMENT DEPARTMENT TO TAKE FORWARD POLICY INITIATIVES TO INCREASE LAND SUPPLY IN THE SHORT, MEDIUM AND LONG TERM
-## 33                       EC(2018-19)30 - Proposed creation of one supernumerary post of a Chief Estate Surveyor in the Lands Department and making permanent of a supernumerary post of Chief Town Planner in the Planning Department  to take forward policy initiatives to increase land supply in the short, medium and long term
-## 65 EC(2018-19)30 - Proposed creation of one supernumerary post of an Administrative Officer Staff Grade C and creation of one permanent post of a Chief Estate Surveyor/Principal Valuation Surveyor in the Government Property Agency to take forward policy initiatives to increase land supply in the short, medium and long term
-##    OverallResult
-## 1         Passed
-## 33        Passed
-## 65        Passed</code></pre>
+##                                                                                                                                                                                      MotionCh
+## 1                                                                   EC(2018-19)30建議將3個編外職位轉為常額職位，即土木工程拓展署的3個總工程師職位，以推展政策措施，增加短、中及長期的土地供應
+## 33                EC(2018-19)30 - 建議開設1個編外職位，即地政總署的1 個總產業測量師職位，以及將1個編外職位轉為常額職位，即規劃署的1個總城市規劃師，以推展政策措施，增加短、中及長期的土地供應
+## 65 EC(2018-19)30 - 建議在政府產業署開設1個編外職位，即1 個首長級丙級政務官職位，以及開設1個常額職位，即1個總產業測量師/首席物業估價測量師常額職位，以推展政策措施，增加短、中及長期的土地供應
+##    OverallYesCount
+## 1               17
+## 33              21
+## 65              18</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Search vote conducted during a specific meeting</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">slot_id =</span> <span class="dv">179602</span>)</span>
 <span id="cb37-3"><a href="#cb37-3"></a>w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
-<pre><code>##              VoteTime       Committee TermID
-## 1 2019-04-03T19:07:55 Council Meeting      5
-##                                         MotionEn OverallResult
-## 1 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT”     Negatived</code></pre>
+<pre><code>##              VoteTime       Committee TermID         MotionCh
+## 1 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+##   OverallYesCount
+## 1              NA</code></pre>
+<p>By default, <code><a href="../reference/search_division.html">search_division()</a></code> returns an index list of votes only. To fetch the voting record of each member:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Search voting record of each member conducted during a specific meeting</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">slot_id =</span> <span class="dv">179602</span>, <span class="dt">index =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">28</span><span class="op">:</span><span class="dv">29</span>, <span class="dv">31</span>)])</span></code></pre></div>
+<pre><code>##              VoteTime       Committee TermID         MotionCh
+## 1 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+## 2 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+## 3 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+## 4 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+## 5 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+## 6 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
+##                                         MotionEn NameCh          NameEn
+## 1 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 梁君彥    Andrew LEUNG
+## 2 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 涂謹申        James TO
+## 3 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 梁耀忠 LEUNG Yiu-chung
+## 4 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 石禮謙    Abraham SHEK
+## 5 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 張宇人    Tommy CHEUNG
+## 6 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 李國麟 Prof Joseph LEE
+##      Vote
+## 1 Present
+## 2     Yes
+## 3     Yes
+## 4      No
+## 5 Abstain
+## 6     Yes</code></pre>
 </div>
 <div id="search_member" class="section level2">
 <h2 class="hasAnchor">
 <a href="#search_member" class="anchor"></a>search_member()</h2>
 <p>The unique identifiers of different LegCo databases are not interchangeable, for instance <code>SpeakerID</code> used in the Hansard Database and <code>MemberID</code> used in the Schedule Database. <code><a href="../reference/search_member.html">search_member()</a></code> provides an easy way to work with <code>SpeakerID</code> and <code>MemberID</code> interchangeably:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># A combined list of all members from legco::speakers() and legco::member()</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>()</span>
-<span id="cb39-3"><a href="#cb39-3"></a>w[<span class="dv">63</span><span class="op">:</span><span class="dv">64</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># A combined list of all members from legco::speakers() and legco::member()</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>()</span>
+<span id="cb41-3"><a href="#cb41-3"></a>w[<span class="dv">63</span><span class="op">:</span><span class="dv">64</span>, ]</span></code></pre></div>
 <pre><code>##    SpeakerID MemberID Type NameChi      NameEng TermID TitleEng SurnameEng
 ## 63       161      929   MB  陳凱欣 CHAN HOI-YAN      5                CHAN
 ## 64       144      912   MB  容海恩 YUNG HOI-YAN      5                YUNG
@@ -443,17 +468,17 @@
 ##    HonourableChi
 ## 63              
 ## 64            JP</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Lookup the MemberID of SpeakerID 63</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">speaker_id =</span> <span class="dv">63</span>)</span>
-<span id="cb41-3"><a href="#cb41-3"></a>w<span class="op">$</span>MemberID</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Lookup the MemberID of SpeakerID 63</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">speaker_id =</span> <span class="dv">63</span>)</span>
+<span id="cb43-3"><a href="#cb43-3"></a>w<span class="op">$</span>MemberID</span></code></pre></div>
 <pre><code>## [1] 260</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Lookup the SpeakerID of MemberID 273</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">member_id =</span> <span class="dv">273</span>)</span>
-<span id="cb43-3"><a href="#cb43-3"></a>w<span class="op">$</span>SpeakerID</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Lookup the SpeakerID of MemberID 273</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">member_id =</span> <span class="dv">273</span>)</span>
+<span id="cb45-3"><a href="#cb45-3"></a>w<span class="op">$</span>SpeakerID</span></code></pre></div>
 <pre><code>## [1] 75</code></pre>
 <p><code><a href="../reference/search_member.html">search_member()</a></code> also allows searching by full or partial name in English or Chinese:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Lookup members with "謙" in their names</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"謙"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Lookup members with "謙" in their names</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"謙"</span>)</span></code></pre></div>
 <pre><code>##   SpeakerID MemberID Type NameChi      NameEng TermID TitleEng SurnameEng
 ## 1        82      101   MB  葉國謙  IP KWOK-HIM      4      Hon         IP
 ## 2        53      187   MB  石禮謙 ABRAHAM SHEK   4, 5      Hon       SHEK
@@ -463,8 +488,8 @@
 ##   HonourableChi
 ## 1       GBS, JP
 ## 2       GBS, JP</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Lookup members with "ting" in their names</span></span>
-<span id="cb47-2"><a href="#cb47-2"></a><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"ting"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Lookup members with "ting" in their names</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"ting"</span>)</span></code></pre></div>
 <pre><code>##   SpeakerID MemberID Type NameChi         NameEng TermID TitleEng
 ## 1       138      911   MB  林卓廷  LAM CHEUK-TING      5         
 ## 2        65      267   MB  黃定光 WONG TING-KWONG   4, 5      Hon
