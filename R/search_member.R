@@ -81,13 +81,16 @@ search_member <- function(search_term = NULL, speaker_id = NULL, member_id = NUL
       engname_tmp <- tolower(df$EnglishName)
       
       if (!exact) {
-        search_term <- unlist(strsplit(search_term, " "))
+        search_tmp <- tolower(search_term)
+        search_tmp <- unlist(strsplit(search_tmp, " "))
+      } else {
+        search_tmp <- search_term
       }
       
-      index <- sapply(search_term, function(x) grep(x, fullname_tmp))
-      index <- c(index, sapply(search_term, function(x) grep(x, surname_tmp)))
-      index <- c(index, sapply(search_term, function(x) grep(x, firstname_tmp)))
-      index <- c(index, sapply(search_term, function(x) grep(x, engname_tmp)))
+      index <- sapply(search_tmp, function(x) grep(x, fullname_tmp))
+      index <- c(index, sapply(search_tmp, function(x) grep(x, surname_tmp)))
+      index <- c(index, sapply(search_tmp, function(x) grep(x, firstname_tmp)))
+      index <- c(index, sapply(search_tmp, function(x) grep(x, engname_tmp)))
     }
     
     index <- unique(unlist(index))
