@@ -62,18 +62,17 @@ library(legcoplus)
 
 The package contains the following functions:
 
-* `answered_questions()` fetches more detailed information and the full
-text of questions put on the government by any given LegCo member.
-* `legco_member_affiliation` contains the declared political affiliation
-and constituency of every member in each term.
-* `member_voting_record()` returns the voting record in LegCo Council 
-and committee meetings.
+* `answered_questions()` fetches more detailed information and the full text of questions
+put on the government by any given LegCo member.
+* `legco_member_affiliation` contains the declared political affiliation and constituency of
+every member in each term.
+* `member_voting_record()` returns the voting record in Council and committee meetings.
 * `search_committee()` searches committee by full or partial name of committee.
-* `search_division()` searches all division(s) (or votes) held in LegCo Council, 
-House Committee, Finance Committe and its subcommittees meetings on any given date, by any given
+* `search_division()` searches all division(s) (or votes) held in Council, House Committee,
+Finance Committe and its subcommittees meetings on any given date, by any given
 committee/subcommittee or during any given meeting slot.
-* `search_member()` searches everyone who speaks in LegCo with unique identifiers
-from different LegCo APIs' databases or full or partial name.
+* `search_member()` searches everyone who speaks in LegCo with unique identifiers from
+different LegCo APIs' databases or full or partial name.
 
 All functions can also be accessed with the prefix `legco_`, e.g. `legco_answered_questions()`
 and `answered_questions()` return the same result.
@@ -93,7 +92,8 @@ but not the full text and the answering body:
 legco::questions(rundown_id = 294209)
 ```
 
-While the function `answered_questions()` fetches the question text and other detailed information as well:
+While the function `answered_questions()` fetches the question text and other detailed information
+as well:
 
 ```{r }
 w <- answered_questions(rundown_id = 294209)
