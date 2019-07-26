@@ -1,9 +1,7 @@
 # legcoplus: Improving Hong Kong Legislative Council Data
-An R package to present data from the Hong Kong Legislative Council (LegCo) APIs in a better way. 
+An R package to clean data retrieved from the Hong Kong Legislative Council (LegCo) APIs. 
 
-Inspired by [evanodell/hansard](https://github.com/evanodell/hansard).
-
-Under development.
+Under active development.
 
 To install this package, run:
 ```
@@ -11,21 +9,19 @@ To install this package, run:
 #devtools::install_github("elgarteo/legco")
 devtools::install_github("elgarteo/legcoplus")
 ```
-or
-```
-install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
-```
 
 ## What it does
-This R package is designed to work with the package [elgarteo/legco](https://github.com/elgarteo/legco). 
+This R package is designed to work with the package [elgarteo/legco](https://github.com/elgarteo/legco),
+which retrieves data from the LegCo API. 
 
-The LegCo APIs mainly work with hansard PDF files and rely on the document structure like 
-section headers and paragraphs to locate data. For example, a query to fetch questions raised by LegCo
-members only tells you in which hansard PDF file and in which section the questions are located in.
-To find out the question text and the answering body, you'd have to crawl through the hansard structure
-and make multiple API calls.
+While it is great that LegCo provides APIs to allow open data access, they are not perfect.
+For exmaple, the presence of seperate APIs for different type of data means searching the 
+right data can be frustrating.
 
-This package solves just that by providing functions that return more usable result from the API.
+This package solves just that by providing functions that patch these deficiencies and facilitate 
+the use of the APIs.
 
 ## Disclaimer
-This package is not affiliated or endorsed by the Legislative Council of Hong Kong.
+This package is not affiliated or endorsed by the Legislative Council of Hong Kong. 
+
+The Legislative Council of Hong Kong owns the copyright of any data retieved from its open data APIs.
