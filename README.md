@@ -12,7 +12,7 @@ devtools::install_github("elgarteo/legcoplus")
 
 ## What it does
 This R package is designed to work with the package [elgarteo/legco](https://github.com/elgarteo/legco),
-which retrieves data from the LegCo API. 
+which retrieves data from the LegCo APIs. 
 
 While it is great that LegCo provides APIs to allow open data access, they are not perfect.
 For exmaple, the presence of seperate APIs for different type of data means searching the 
