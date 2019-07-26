@@ -22,16 +22,12 @@ To install `legco`:
 
 ### From GitHub
 
-*Available Soon*
-
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("elgarteo/legco")
 ```
 
-### From web
-
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
 ```
 
@@ -39,16 +35,12 @@ install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz"
 
 ### From GitHub
 
-*Available Soon*
-
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("elgarteo/legcoplus")
 ```
 
-### From web
-
-```{r, eval = FALSE}
+```{r, eval = FALSE, echo = FALSE}
 install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
 ```
 
