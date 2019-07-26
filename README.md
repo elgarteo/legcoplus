@@ -21,6 +21,9 @@ right data can be frustrating.
 This package solves just that by providing functions that patch these deficiencies and facilitate 
 the use of the APIs.
 
+## How to use
+Read the [vignettes](https://elgarteo.ga/legco/legcoplus/) for details.
+
 ## Disclaimer
 This package is not affiliated or endorsed by the Legislative Council of Hong Kong. 
 
