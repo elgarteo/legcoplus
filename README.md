@@ -24,4 +24,4 @@ the use of the APIs.
 ## Disclaimer
 This package is not affiliated or endorsed by the Legislative Council of Hong Kong. 
 
-The Legislative Council of Hong Kong owns the copyright of any data retieved from its open data APIs.
+The Legislative Council of Hong Kong is the copyright owner of data retieved from its open data APIs.
