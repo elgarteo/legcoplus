@@ -49,32 +49,26 @@ answered_questions <- function(speaker_id = NULL, member_id = NULL,
   if (is.null(speaker_id) & is.null(member_id) & is.null(rundown_id)) {
     stop("Please specifiy at least one LegCo member or Rundown ID.")
   } 
-  limit <- set_limit()
   
   if (!is.null(member_id)) {
     tmp <- search_member(member_id = member_id, verbose = verbose)
-    limit <- limit - 3
     speaker_id <- c(speaker_id, tmp$SpeakerID)
   }
   
   df <- legco::questions(speaker_id = speaker_id, rundown_id = rundown_id,
                          type = type, lang = lang, from = from,
                          to = to, floor = floor, n = n, verbose = verbose)
-  limit <-  limit - 1
   
   if (!is.null(df)) {
     for (i in 1:nrow(df)) {
       # Locate range of Rundown ID of question
       hansard_id <- legco::rundown(df$RundownID[i], verbose = verbose)
-      limit <- check_limit(limit, verbose)
       hansard_id <- hansard_id$HansardID
       max_rundown_id <- legco::subjects(hansard_id = hansard_id, verbose = verbose)
-      limit <- check_limit(limit, verbose)
       max_rundown_id <- max_rundown_id$RundownID[min(which(max_rundown_id$RundownID > df$RundownID[i]))] - 1
       
       # Fetch full text with Rundown IDs
       full_txt <- legco::rundown((df$RundownID[i] + 1):max_rundown_id, verbose = verbose)
-      limit <- check_limit(limit, verbose)
       full_txt <- full_txt[order(full_txt$RundownID), ]
       
       # Identify Speaker ID of answering public officer
