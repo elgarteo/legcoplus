@@ -79,7 +79,7 @@
     <div class="page-header toc-ignore">
       <h1>Introduction to legcoplus</h1>
             
-            <h4 class="date">2019-07-26</h4>
+            <h4 class="date">2019-07-27</h4>
       
       
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -137,7 +137,7 @@
 <div id="api-limits" class="section level3">
 <h3 class="hasAnchor">
 <a href="#api-limits" class="anchor"></a>API Limits</h3>
-<p>LegCo APIs have an access limit of appraximately 1000 requests per hour per IP. As some of the functions in this package (such as <code><a href="../reference/answered_questions.html">answered_questions()</a></code>) make multiple requests, the limit can be reached very easily. It is therefore advised to retrieve the data in smaller packets.</p>
+<p>LegCo APIs have an access limit of appraximately 1000 requests per hour per IP. As some of the functions in this package (such as <code><a href="../reference/answered_questions.html">answered_questions()</a></code>) make multiple requests at a time, the limit can be reached very easily. It is therefore advised to retrieve the data in smaller packets.</p>
 </div>
 </div>
 <div id="answered_questions" class="section level2">
@@ -310,7 +310,7 @@
 <h2 class="hasAnchor">
 <a href="#search_committee" class="anchor"></a>search_committee()</h2>
 <p>The function <code><a href="../reference/search_committee.html">search_committee()</a></code> allows searching committee with full or partial name of the committee:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Search all Bills Committees established in the fixth term of LegCo</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Search all Bills Committees established in the sixth term of LegCo</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"bills committee"</span>, <span class="dt">term_id =</span> <span class="dv">5</span>)</span>
 <span id="cb25-3"><a href="#cb25-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##   CommitteeID CommitteeCode

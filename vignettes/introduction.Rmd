@@ -72,8 +72,8 @@ and `answered_questions()` return the same result.
 ### API Limits
 
 LegCo APIs have an access limit of appraximately 1000 requests per hour per IP. As some of the functions 
-in this package (such as `answered_questions()`) make multiple requests, the limit can be reached very 
-easily. It is therefore advised to retrieve the data in smaller packets.
+in this package (such as `answered_questions()`) make multiple requests at a time, the limit can be reached
+very easily. It is therefore advised to retrieve the data in smaller packets.
 
 ## answered_questions() {#answered_questions}
 
@@ -170,7 +170,7 @@ head(w)
 The function `search_committee()` allows searching committee with full or partial name of the committee:
 
 ```{r }
-# Search all Bills Committees established in the fixth term of LegCo
+# Search all Bills Committees established in the sixth term of LegCo
 w <- search_committee(search_term = "bills committee", term_id = 5)
 head(w[, 1:4])
 ```
