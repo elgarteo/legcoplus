@@ -1,5 +1,5 @@
 # legcoplus: Improving Hong Kong Legislative Council Data
-An R package to clean data retrieved from the Hong Kong Legislative Council (LegCo) APIs. 
+An R package to facilitate the use of the Hong Kong Legislative Council's data.
 
 Under active development.
 
