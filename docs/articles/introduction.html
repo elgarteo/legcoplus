@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to legcoplus • legcoplus</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to legcoplus">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -55,7 +56,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href=".././..">Base: legco</a>
+  <a href="https://elgarteo.github.io/legco/">Base: legco</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -74,12 +75,13 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+
+      </header><script src="introduction_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to legcoplus</h1>
             
-            <h4 class="date">2019-07-27</h4>
+            <h4 class="date">2020-01-31</h4>
       
       
       <div class="hidden name"><code>introduction.Rmd</code></div>
@@ -92,28 +94,17 @@
 <div id="prerequiste" class="section level2">
 <h2 class="hasAnchor">
 <a href="#prerequiste" class="anchor"></a>Prerequiste</h2>
-<p>This package requires the package <a href="%22https://elgarteo.ga/legco/"><code>legco</code></a> to fetch LegCo’s open data. To install <code>legco</code>:</p>
-<div id="from-github" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-github" class="anchor"></a>From GitHub</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"elgarteo/legco"</span>)</span></code></pre></div>
-</div>
+<p>This package requires the package <a href="https://github.com/elgarteo/legco"><code>legco</code></a> to fetch LegCo’s open data. To install <code>legco</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"elgarteo/legco"</span>)</span></code></pre></div>
 </div>
 <div id="installing-legcoplus" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-legcoplus" class="anchor"></a>Installing legcoplus</h2>
-<div id="from-github-1" class="section level3">
-<h3 class="hasAnchor">
-<a href="#from-github-1" class="anchor"></a>From GitHub</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"elgarteo/legcoplus"</span>)</span></code></pre></div>
-</div>
-<div id="load-legcoplus" class="section level3">
-<h3 class="hasAnchor">
-<a href="#load-legcoplus" class="anchor"></a>Load legcoplus</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(legcoplus)</span></code></pre></div>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"elgarteo/legcoplus"</span>)</span></code></pre></div>
+<p>And to load it before every use:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(legcoplus)</span></code></pre></div>
 </div>
 <div id="list-of-functions" class="section level2">
 <h2 class="hasAnchor">
@@ -143,8 +134,8 @@
 <div id="answered_questions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#answered_questions" class="anchor"></a>answered_questions()</h2>
-<p>The function <code><a href="https://www.rdocumentation.org/packages/legco/topics/questions">legco::questions()</a></code> returns only the subject of the question put on the government but not the full text and the answering body:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/questions">questions</a></span>(<span class="dt">rundown_id =</span> <span class="dv">294209</span>)</span></code></pre></div>
+<p>The function <code><a href="https://rdrr.io/pkg/legco/man/questions.html">legco::questions()</a></code> returns only the subject of the question put on the government but not the full text and the answering body:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>legco<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/legco/man/questions.html">questions</a></span>(<span class="dt">rundown_id =</span> <span class="dv">294209</span>)</span></code></pre></div>
 <pre><code>##           MeetingDate QuestionType
 ## 1 2013-01-23T00:00:00         Oral
 ##                                             Subject      Speaker SpeakerID
@@ -158,7 +149,7 @@
 <p>Note that if <code>verbose</code> is enabled (which is by default), multiple messages will be shown. They are created when the function is making multiple requests to the APIs. The actual number of records in the final output data frame is displayed in the last message. For instance, it is 1 in the example above.</p>
 <p><code><a href="../reference/answered_questions.html">answered_questions()</a></code> returns the asking members of the main question and the supplementary questions (if any):</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># All asking members (including supplementary questions)</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/speakers">speakers</a></span>(w<span class="op">$</span>AskingSpeakerID)</span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2"></a>legco<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/legco/man/speakers.html">speakers</a></span>(w<span class="op">$</span>AskingSpeakerID)</span></code></pre></div>
 <pre><code>##   SpeakerID NameChi       NameEng Type Initial  FirstName LastName
 ## 1       109  梁繼昌 KENNETH LEUNG   MB      KL Kai-cheong    LEUNG
 ## 2       106  陳家洛  KENNETH CHAN   MB      KC     Ka-lok     CHAN
@@ -166,7 +157,7 @@
 ## 4        95  田北俊    JAMES TIEN   MB     TPC   Pei-chun     TIEN
 ## 5        91  黃毓民  WONG YUK-MAN   MB     WYM    Yuk-man     WONG</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># The answering official of the question</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>legco<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/legco/topics/speakers">speakers</a></span>(w<span class="op">$</span>AnsweringSpeakerID)</span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2"></a>legco<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/legco/man/speakers.html">speakers</a></span>(w<span class="op">$</span>AnsweringSpeakerID)</span></code></pre></div>
 <pre><code>##   SpeakerID              NameChi
 ## 1        15 政制及內地事務局局長
 ## 2        13 財經事務及庫務局局長
@@ -186,27 +177,27 @@
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Excerpts of key appointment holders (e.g. President)/LegCo staff</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>w<span class="op">$</span>Misc[[<span class="dv">1</span>]][<span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## [1] "PRESIDENT (in Cantonese): Which Secretary will reply?  Secretary for Financial Services and the Treasury, please reply.  "</code></pre>
-<p>It is also possible to fetch all questions raised by any given member and filter by parameters that are supported by <code><a href="https://www.rdocumentation.org/packages/legco/topics/questions">legco::questions()</a></code>.</p>
+<p>It is also possible to fetch all questions raised by any given member and filter by parameters that are supported by <code><a href="https://rdrr.io/pkg/legco/man/questions.html">legco::questions()</a></code>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Search all written questions asked by SpeakerID 61 and MemberID 209</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co"># from January to April 2019 in Chinese</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/answered_questions.html">answered_questions</a></span>(<span class="dt">speaker_id =</span> <span class="dv">61</span>, <span class="dt">member_id =</span> <span class="dv">209</span>,</span>
 <span id="cb17-4"><a href="#cb17-4"></a>                        <span class="dt">from =</span> <span class="st">"2019-01-01"</span>, <span class="dt">to =</span><span class="st">"2019-04-30"</span>,</span>
 <span id="cb17-5"><a href="#cb17-5"></a>                        <span class="dt">type =</span> <span class="st">"written"</span>, <span class="dt">lang =</span> <span class="st">"zh"</span>)</span>
 <span id="cb17-6"><a href="#cb17-6"></a>w[, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
-<pre><code>##           MeetingDate QuestionType
-## 1 2019-01-16T00:00:00      Written
-## 2 2019-01-16T00:00:00      Written
-## 3 2019-01-30T00:00:00      Written
-## 4 2019-02-27T00:00:00      Written
-## 5 2019-03-27T00:00:00      Written
-## 6 2019-04-03T00:00:00      Written
-##                                    Subject Speaker SpeakerID
-## 1         有關南丫島附近撞船事故的跟進行動  涂謹申        39
-## 2                 延長產假措施對人手的影響  李國麟        61
-## 3                   打擊引致擠塞的交通罪行  涂謹申        39
-## 4                             推廣智力運動  涂謹申        39
-## 5 領展房地產投資信託基金擁有或售出的停車場  涂謹申        39
-## 6               為永久造口病人提供財政資助  李國麟        61</code></pre>
+<pre><code>##           MeetingDate QuestionType                                  Subject
+## 1 2019-01-16T00:00:00      Written         有關南丫島附近撞船事故的跟進行動
+## 2 2019-01-16T00:00:00      Written                 延長產假措施對人手的影響
+## 3 2019-01-30T00:00:00      Written                   打擊引致擠塞的交通罪行
+## 4 2019-02-27T00:00:00      Written                             推廣智力運動
+## 5 2019-03-27T00:00:00      Written 領展房地產投資信託基金擁有或售出的停車場
+## 6 2019-04-03T00:00:00      Written               為永久造口病人提供財政資助
+##   Speaker SpeakerID
+## 1  涂謹申        39
+## 2  李國麟        61
+## 3  涂謹申        39
+## 4  涂謹申        39
+## 5  涂謹申        39
+## 6  李國麟        61</code></pre>
 </div>
 <div id="legco_member_affiliation" class="section level2">
 <h2 class="hasAnchor">
@@ -214,7 +205,7 @@
 <p><code>legco_member_affiliation</code> is a list containing data frames of the political affiliation and constituency of every member in each LegCo term. The dataframes are named by the respective <code>TermID</code> they represent. For example, to fetch the data of the fifth term of LegCo:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Political affiliation of the sixth term of LegCo</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>w &lt;-<span class="st"> </span>legco_member_affiliation[[<span class="st">"5"</span>]]</span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</span></code></pre></div>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(w)</span></code></pre></div>
 <pre><code>##   SpeakerID MemberID                NameEng NameChi    TypeEng  TypeChi
 ## 1        63      260 Andrew LEUNG Kwan-yuen  梁君彥 Functional 功能界別
 ## 2        39      209       James TO Kun-sun  涂謹申 Functional 功能界別
@@ -235,17 +226,17 @@
 ## 3         Neighbourhood and Worker’s Service Centre   街坊工友服務處
 ## 4 Business and Professionals Alliance for Hong Kong 香港經濟民生聯盟
 ## 5                                     Liberal Party           自由黨
-## 6                                              &lt;NA&gt;             &lt;NA&gt;</code></pre>
+## 6</code></pre>
 </div>
 <div id="member_voting_record" class="section level2">
 <h2 class="hasAnchor">
 <a href="#member_voting_record" class="anchor"></a>member_voting_record()</h2>
-<p>The function <code><a href="https://www.rdocumentation.org/packages/legco/topics/voting_record">legco::voting_record()</a></code> of the Voting Results Database does not accept filtering parameters of any unique identifier from other databases such as <code>SpeakerID</code>, <code>MemberID</code>, <code>CommitteeID</code> and <code>SlotID</code>. Instead, it only takes the full Chinese names of LegCo members and full English name of the committee. With the function <code><a href="../reference/member_voting_record.html">member_voting_record()</a></code>, it is possible to apply these idenitifers to search the voting results.</p>
+<p>The function <code><a href="https://rdrr.io/pkg/legco/man/voting_record.html">legco::voting_record()</a></code> of the Voting Results Database does not accept filtering parameters of any unique identifier from other databases such as <code>SpeakerID</code>, <code>MemberID</code>, <code>CommitteeID</code> and <code>SlotID</code>. Instead, it only takes the full Chinese names of LegCo members and full English name of the committee. With the function <code><a href="../reference/member_voting_record.html">member_voting_record()</a></code>, it is possible to apply these idenitifers to search the voting results.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Search the voting records of SpeakerID 102 and MemberID 910</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="co"># in CommitteeID 2567 since June 15, 2019.</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/member_voting_record.html">member_voting_record</a></span>(<span class="dt">speaker_id =</span> <span class="dv">102</span>, <span class="dt">member_id =</span> <span class="dv">910</span>,</span>
 <span id="cb21-4"><a href="#cb21-4"></a>                          <span class="dt">committee_id =</span> <span class="dv">2567</span>, <span class="dt">from =</span> <span class="st">"2019-06-15"</span>)</span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</span></code></pre></div>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(w)</span></code></pre></div>
 <pre><code>##              VoteTime         Committee TermID
 ## 1 2019-06-28T15:57:41 Finance Committee      5
 ## 2 2019-06-28T15:57:41 Finance Committee      5
@@ -276,7 +267,7 @@
 ## 6        Passed 朱凱廸 CHU Hoi-dick  Yes</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Search the voting records of meeting with SlotID </span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/member_voting_record.html">member_voting_record</a></span>(<span class="dt">slot_id =</span> <span class="dv">177529</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w)</span></code></pre></div>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(w)</span></code></pre></div>
 <pre><code>##              VoteTime                 Committee TermID
 ## 1 2019-06-19T09:31:49 Public Works Subcommittee      5
 ## 2 2019-06-19T09:31:49 Public Works Subcommittee      5
@@ -312,7 +303,7 @@
 <p>The function <code><a href="../reference/search_committee.html">search_committee()</a></code> allows searching committee with full or partial name of the committee:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Search all Bills Committees established in the sixth term of LegCo</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"bills committee"</span>, <span class="dt">term_id =</span> <span class="dv">5</span>)</span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##   CommitteeID CommitteeCode
 ## 1        2724       BC/1/16
 ## 2        2834       BC/1/17
@@ -349,7 +340,7 @@
 ## 2 《2018年渡輪服務(修訂)條例草案》委員會</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Search all committees with either "動" or "植" in the name</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_committee.html">search_committee</a></span>(<span class="dt">search_term =</span> <span class="st">"動植"</span>, <span class="dt">exact =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(w[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##   CommitteeID CommitteeCode
 ## 1        2737      BC/53/16
 ## 2        2768       BC/6/16
@@ -395,10 +386,10 @@
 <div id="search_division" class="section level2">
 <h2 class="hasAnchor">
 <a href="#search_division" class="anchor"></a>search_division()</h2>
-<p><code><a href="https://www.rdocumentation.org/packages/legco/topics/voting_record">legco::voting_record()</a></code> of the LegCo Voting Result Database does not support the use of individual identifiers in search and the presentation of an index of votes. With the function <code><a href="../reference/search_division.html">search_division()</a></code>, it is possible to search division(s) with CommitteeID, and SlotID:</p>
+<p><code><a href="https://rdrr.io/pkg/legco/man/voting_record.html">legco::voting_record()</a></code> of the LegCo Voting Result Database does not support the use of individual identifiers in search and the presentation of an index of votes. With the function <code><a href="../reference/search_division.html">search_division()</a></code>, it is possible to search division(s) with CommitteeID, and SlotID:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Search votes conducted on April 3, 2019 by the Establishment Subcommittee</span></span>
 <span id="cb35-2"><a href="#cb35-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">search_date =</span> <span class="st">"2019-04-03"</span>, <span class="dt">committee_id =</span> <span class="dv">2943</span>)</span>
-<span id="cb35-3"><a href="#cb35-3"></a>w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
+<span id="cb35-3"><a href="#cb35-3"></a>w[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
 <pre><code>##               VoteTime                  Committee TermID
 ## 1  2019-04-03T09:46:15 Establishment Subcommittee      5
 ## 33 2019-04-03T09:48:17 Establishment Subcommittee      5
@@ -413,15 +404,13 @@
 ## 65              18</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Search vote conducted during a specific meeting</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">slot_id =</span> <span class="dv">179602</span>)</span>
-<span id="cb37-3"><a href="#cb37-3"></a>w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
-<pre><code>##              VoteTime       Committee TermID         MotionCh
-## 1 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
-##   OverallYesCount
-## 1              NA</code></pre>
+<span id="cb37-3"><a href="#cb37-3"></a>w[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">24</span>)]</span></code></pre></div>
+<pre><code>##              VoteTime       Committee TermID         MotionCh OverallYesCount
+## 1 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案              NA</code></pre>
 <p>By default, <code><a href="../reference/search_division.html">search_division()</a></code> returns an index list of votes only. To fetch the voting record of each member:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Search voting record of each member conducted during a specific meeting</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a>w &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_division.html">search_division</a></span>(<span class="dt">slot_id =</span> <span class="dv">179602</span>, <span class="dt">index =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb39-3"><a href="#cb39-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(w[, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">28</span><span class="op">:</span><span class="dv">29</span>, <span class="dv">31</span>)])</span></code></pre></div>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(w[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">28</span><span class="op">:</span><span class="dv">29</span>, <span class="dv">31</span>)])</span></code></pre></div>
 <pre><code>##              VoteTime       Committee TermID         MotionCh
 ## 1 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
 ## 2 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
@@ -429,20 +418,13 @@
 ## 4 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
 ## 5 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
 ## 6 2019-04-03T19:07:55 Council Meeting      5 「毋忘六四」議案
-##                                         MotionEn NameCh          NameEn
-## 1 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 梁君彥    Andrew LEUNG
-## 2 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 涂謹申        James TO
-## 3 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 梁耀忠 LEUNG Yiu-chung
-## 4 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 石禮謙    Abraham SHEK
-## 5 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 張宇人    Tommy CHEUNG
-## 6 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 李國麟 Prof Joseph LEE
-##      Vote
-## 1 Present
-## 2     Yes
-## 3     Yes
-## 4      No
-## 5 Abstain
-## 6     Yes</code></pre>
+##                                         MotionEn NameCh          NameEn    Vote
+## 1 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 梁君彥    Andrew LEUNG Present
+## 2 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 涂謹申        James TO     Yes
+## 3 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 梁耀忠 LEUNG Yiu-chung     Yes
+## 4 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 石禮謙    Abraham SHEK      No
+## 5 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 張宇人    Tommy CHEUNG Abstain
+## 6 MOTION ON “NOT FORGETTING THE 4 JUNE INCIDENT” 李國麟 Prof Joseph LEE     Yes</code></pre>
 </div>
 <div id="search_member" class="section level2">
 <h2 class="hasAnchor">
@@ -482,20 +464,21 @@
 ## 2       GBS, JP</code></pre>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Lookup members with "ting" in their names</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a><span class="kw"><a href="../reference/search_member.html">search_member</a></span>(<span class="dt">search_term =</span> <span class="st">"ting"</span>)</span></code></pre></div>
-<pre><code>##   SpeakerID MemberID Type NameChi         NameEng TermID TitleEng
-## 1       138      911   MB  林卓廷  LAM CHEUK-TING      5         
-## 2        65      267   MB  黃定光 WONG TING-KWONG   4, 5      Hon
-##   SurnameEng FirstnameEng EnglishName HonourableEng SurnameChi
-## 1        LAM   Cheuk-ting                                   林
-## 2       WONG   Ting-kwong                   GBS, JP         黃
-##   FirstnameChi TitleChi HonourableChi
-## 1         卓廷     議員              
-## 2         定光     議員       GBS, JP</code></pre>
+<pre><code>##   SpeakerID MemberID Type NameChi         NameEng TermID TitleEng SurnameEng
+## 1       138      911   MB  林卓廷  LAM CHEUK-TING      5                 LAM
+## 2        65      267   MB  黃定光 WONG TING-KWONG   4, 5      Hon       WONG
+##   FirstnameEng EnglishName HonourableEng SurnameChi FirstnameChi TitleChi
+## 1   Cheuk-ting                                   林         卓廷     議員
+## 2   Ting-kwong                   GBS, JP         黃         定光     議員
+##   HonourableChi
+## 1              
+## 2       GBS, JP</code></pre>
 <p>The searching parameter of <code><a href="../reference/search_member.html">search_member()</a></code> has the same options with that of <code><a href="../reference/search_committee.html">search_committee()</a></code> such as the exact search option. Refer <a href="#search_committee">here</a> for detailed examples on how to apply these options in your search.</p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -516,17 +499,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by <a href="https://elgarteo.ga">Elgar Teo</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

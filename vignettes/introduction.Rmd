@@ -17,34 +17,22 @@ enhance the efficiency of the use of LegCo's APIs.
 
 ## Prerequiste
 
-This package requires the package [`legco`]("https://elgarteo.ga/legco/) to fetch LegCo's open data. 
+This package requires the package [`legco`](https://github.com/elgarteo/legco) to fetch LegCo's open data. 
 To install `legco`:
-
-### From GitHub
 
 ```{r, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("elgarteo/legco")
 ```
 
-```{r, eval = FALSE, echo = FALSE}
-install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
-```
-
 ## Installing legcoplus
-
-### From GitHub
 
 ```{r, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("elgarteo/legcoplus")
 ```
 
-```{r, eval = FALSE, echo = FALSE}
-install.packages("https://elgarteo.ga/legco/legcoplus/legcoplus_0.0.9999.tar.gz", repos = NULL, type = "source")
-```
-
-### Load legcoplus
+And to load it before every use:
 
 ```{r}
 library(legcoplus)

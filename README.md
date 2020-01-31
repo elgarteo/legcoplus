@@ -21,7 +21,7 @@ data you need can be frustrating.
 This package solves just that by providing functions and tools that patch these deficiencies.
 
 ## How to use
-Read the [vignettes](https://elgarteo.ga/legco/legcoplus/) for details.
+Read the [vignettes](https://elgarteo.github.io/legcoplus/) for details.
 
 ## Disclaimer
 This package is not affiliated or endorsed by the Legislative Council of Hong Kong. 

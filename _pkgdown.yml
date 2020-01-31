@@ -17,7 +17,7 @@ navbar:
     - text: "Reference"
       href: reference/index.html
     - text: "Base: legco"
-      href: ./..
+      href: https://elgarteo.github.io/legco/
 
   right:
     - icon: fa-github fa-lg
